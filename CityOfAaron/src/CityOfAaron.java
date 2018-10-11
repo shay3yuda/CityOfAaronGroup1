@@ -10,6 +10,7 @@ import model.Map;
 import model.InventoryItem;
 import model.ItemType;
 import model.Condition;
+import model.Animal;
 /**
  *
  * @author conta
@@ -33,11 +34,16 @@ public class CityOfAaron {
         inventoryItem.setQuantity(7);
         inventoryItem.setCondition(new Condition());
         
+        Animal animal = new Animal();
+        animal.setName("Buddy");
+        animal.setAge(15);
+        
        
         
         
         System.out.println(theGame.toString());
         System.out.println(inventoryItem.toString());
+        System.out.println(animal.toString());
         
         
     }

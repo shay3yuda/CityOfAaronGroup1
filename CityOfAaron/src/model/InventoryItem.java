@@ -15,7 +15,7 @@ public class InventoryItem implements Serializable{
     private Condition condition;
     
     public InventoryItem() {
-     //empty constructor for JavaBeans  
+     //empty default constructor for JavaBeans  
     }
     
     public ItemType getItemType() {

@@ -11,6 +11,7 @@ import model.InventoryItem;
 import model.ItemType;
 import model.Condition;
 import model.Animal;
+import model.Provision;
 /**
  *
  * @author conta
@@ -38,12 +39,15 @@ public class CityOfAaron {
         animal.setName("Buddy");
         animal.setAge(15);
         
-       
+        Provision provision = new Provision();
+        provision.setName("bread");
+        provision.setPerishable(true);
         
         
         System.out.println(theGame.toString());
         System.out.println(inventoryItem.toString());
         System.out.println(animal.toString());
+        System.out.println(provision.toString());
         
         
     }

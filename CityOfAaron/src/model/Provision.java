@@ -10,13 +10,13 @@ import java.io.Serializable;
  *
  * @author Brenda
  */
-public class Animal extends InventoryItem implements Serializable {
+public class Provision extends InventoryItem implements Serializable{
     private String name;
-    private int age;
-        
-    public Animal() {
-     //empty default constructor for JavaBeans  
-    }  
+    private Boolean perishable;
+    
+    public Provision() {
+        //empty default constructor for JavaBeans
+    }
     
     public String getName() {
         return name;
@@ -26,22 +26,20 @@ public class Animal extends InventoryItem implements Serializable {
         this.name = name;
     }
     
-    public int getAge() {
-        return age;
+    public Boolean getPerishable() {
+        return perishable;
     }
     
-    public void setAge(int age) {
-        this.age = age;
+    public void setPerishable(Boolean perishable) {
+        this.perishable = perishable;
     }
 
     @Override
     public String toString() {
-        return "Animal {" 
+        return "Provision {" 
                 + " name = " + name 
-                + ", age = " + age 
+                + ", perishable = " + perishable 
                 + " }";
     }
-    
-    
     
 }

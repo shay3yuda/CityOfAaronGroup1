@@ -7,6 +7,9 @@ import model.Game;
 import model.Player;
 import model.Storehouse;
 import model.Map;
+import model.InventoryItem;
+import model.ItemType;
+import model.Condition;
 /**
  *
  * @author conta
@@ -24,11 +27,17 @@ public class CityOfAaron {
         theGame.setCurrentPopulation(205);
         theGame.setAcresOwned(2000);
         theGame.setWheatInStorage(15000);
+     
+        InventoryItem inventoryItem = new InventoryItem();
+        inventoryItem.setItemType(new ItemType());
+        inventoryItem.setQuantity(7);
+        inventoryItem.setCondition(new Condition());
         
        
         
         
         System.out.println(theGame.toString());
+        System.out.println(inventoryItem.toString());
         
         
     }

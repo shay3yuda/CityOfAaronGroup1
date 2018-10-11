@@ -25,7 +25,7 @@ public class CityOfAaron {
         theGame.setAcresOwned(2000);
         theGame.setWheatInStorage(15000);
         
-        
+       
         
         
         System.out.println(theGame.toString());

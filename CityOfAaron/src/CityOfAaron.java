@@ -12,6 +12,8 @@ import model.ItemType;
 import model.Condition;
 import model.Animal;
 import model.Provision;
+import model.Location;
+import model.Point;
 import model.Author;
 
 /**
@@ -45,13 +47,6 @@ public class CityOfAaron {
         Provision provision = new Provision();
         provision.setName("bread");
         provision.setPerishable(true);
-       
-        Player player = new Player();
-        player.setName("Bob");
-        
-        Author author = new Author();
-        author.setName("Jane");
-        author.setTitle("Builder");
         
         Point point = new Point();
         Point pointCurrent;
@@ -82,7 +77,12 @@ public class CityOfAaron {
         //4
         //   X = newLocation variable, set on line 68
         
+        Player player = new Player();
+        player.setName("Bob");
         
+        Author author = new Author();
+        author.setName("Jane");
+        author.setTitle("Builder");
         
         Storehouse storehouse = new Storehouse();
         storehouse.setAuthors(new Author[] {author});
@@ -91,10 +91,12 @@ public class CityOfAaron {
         System.out.println(inventoryItem.toString());
         System.out.println(animal.toString());
         System.out.println(provision.toString());
-        System.out.println(player.toString());
-        System.out.println(author.toString());
-        System.out.println(storehouse.toString());
-      
+        System.out.println(point.toString());
+        System.out.println(theMap.toString());
+        System.out.println(Condition.GOOD);
+        System.out.println(newLocation.toString());
+        
+        
     }
     
 }

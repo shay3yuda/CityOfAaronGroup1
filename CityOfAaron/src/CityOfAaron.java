@@ -36,7 +36,7 @@ public class CityOfAaron {
         InventoryItem inventoryItem = new InventoryItem();
         inventoryItem.setItemType(new ItemType());
         inventoryItem.setQuantity(7);
-        inventoryItem.setCondition(new Condition());
+        inventoryItem.setCondition(Condition.GOOD);
         
         Animal animal = new Animal();
         animal.setName("Buddy");
@@ -52,6 +52,37 @@ public class CityOfAaron {
         Author author = new Author();
         author.setName("Jane");
         author.setTitle("Builder");
+        
+        Point point = new Point();
+        Point pointCurrent;
+        point.setRow(3);
+        point.setColumn(3);
+        
+        Map theMap = new Map();
+        theMap.setCurrentLocation(point);
+        Location[][] locations = theMap.getLocations();
+        pointCurrent = theMap.getCurrentLocation();
+        //locations[pointCurrent.getRow()][pointCurrent.getColumn()].getMapSymbol();
+        
+        Location newLocation = new Location();
+        newLocation.setName("Temple");
+        newLocation.setDescription("This is center of life in the City of Aaron");
+        newLocation.setMapSymbol("T");
+        newLocation.setGameTips(new String[] {
+            "Tip 1", "Tip 2", "Tip 3"
+        });
+        
+        locations[pointCurrent.getRow()][pointCurrent.getColumn()] = newLocation;
+                
+        //  0  1  2  3  4
+        //0
+        //1
+        //2
+        //3          X
+        //4
+        //   X = newLocation variable, set on line 68
+        
+        
         
         Storehouse storehouse = new Storehouse();
         storehouse.setAuthors(new Author[] {author});

@@ -36,10 +36,8 @@ public class Animal extends InventoryItem implements Serializable {
 
     @Override
     public String toString() {
-        return "Animal {" 
-                + " name = " + name 
-                + ", age = " + age 
-                + " }";
+        return String.format("Animal {%s, name=%s, age=%s}", 
+                super.toString(), name, age);
     }
     
     

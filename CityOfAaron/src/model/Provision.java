@@ -36,10 +36,8 @@ public class Provision extends InventoryItem implements Serializable{
 
     @Override
     public String toString() {
-        return "Provision {" 
-                + " name = " + name 
-                + ", perishable = " + perishable 
-                + " }";
+        return String.format("Provision {%s, name=%s, perishable=%s}", 
+                super.toString(), name, perishable);
     }
     
 }

@@ -9,13 +9,10 @@ package model;
  *
  * @author Brenda
  */
-public class Condition {
-    public Condition(){
-        //empty for default constructor for JavaBeans
-    }
-    
-    @Override
-    public String toString() {
-        return "Condition class coming soon";
-    }
+public enum Condition {
+        GOOD,
+        FAIR,
+        POOR;
+
 }
+

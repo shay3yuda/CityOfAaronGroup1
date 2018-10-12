@@ -56,10 +56,10 @@ public class Storehouse implements Serializable {
     public String toString() {
         return "Storehouse {" 
                 + " authors = " + Arrays.toString(authors) 
-                + ", animals = " + animals 
-                + ", tools = " + tools 
-                + ", provisions = " + provisions 
-                + "}";
+                + ", animals = " + Arrays.toString(animals) 
+                + ", tools = " + Arrays.toString(tools) 
+                + ", provisions = " + Arrays.toString(provisions) 
+                + " }";
     }
     
     

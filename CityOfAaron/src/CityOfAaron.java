@@ -36,7 +36,7 @@ public class CityOfAaron {
         theGame.setWheatInStorage(15000);
      
         InventoryItem inventoryItem = new InventoryItem();
-        inventoryItem.setItemType(new ItemType());
+        inventoryItem.setItemType(ItemType.ANIMAL);
         inventoryItem.setQuantity(7);
         inventoryItem.setCondition(Condition.GOOD);
         
@@ -86,6 +86,9 @@ public class CityOfAaron {
         
         Storehouse storehouse = new Storehouse();
         storehouse.setAuthors(new Author[] {author});
+        storehouse.setAnimals(new Animal[] {animal});
+        storehouse.setTools(new InventoryItem[] {inventoryItem});
+        storehouse.setProvisions(new Provision[] {provision});
        
         System.out.println(theGame.toString());
         System.out.println(inventoryItem.toString());
@@ -95,6 +98,10 @@ public class CityOfAaron {
         System.out.println(theMap.toString());
         System.out.println(Condition.GOOD);
         System.out.println(newLocation.toString());
+        System.out.println(ItemType.ANIMAL);
+        System.out.println(player.toString());
+        System.out.println(author.toString());
+        System.out.println(storehouse.toString());
         
         
     }

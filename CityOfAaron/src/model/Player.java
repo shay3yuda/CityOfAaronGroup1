@@ -3,18 +3,33 @@
  */
 package model;
 
+import java.io.Serializable;
+
 /**
  *
- * @author Brenda
+ * @author estherhsia
  */
-public class Player {
+public class Player implements Serializable {
+    
+    private String name;
+    
     public Player() {
         //empty for default constructor
     } 
     
+    public String getName() {
+        return name;
+    }
+    
+    public void setName(String name) {
+        this.name = name;
+    }
+    
     @Override
     public String toString() {
-       return "Player class coming soon";
+       return "Player {"
+               + " name = " + name
+               + " }";
     } 
     
 }

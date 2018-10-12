@@ -33,10 +33,10 @@ public class CityOfAaron {
         theGame.setAcresOwned(2000);
         theGame.setWheatInStorage(15000);
      
-        /*InventoryItem inventoryItem = new InventoryItem();
+        InventoryItem inventoryItem = new InventoryItem();
         inventoryItem.setItemType(new ItemType());
         inventoryItem.setQuantity(7);
-        inventoryItem.setCondition(new Condition());*/
+        inventoryItem.setCondition(new Condition());
         
         Animal animal = new Animal();
         animal.setName("Buddy");
@@ -54,14 +54,15 @@ public class CityOfAaron {
         author.setTitle("Builder");
         
         Storehouse storehouse = new Storehouse();
-        
+        storehouse.setAuthors(new Author[] {author});
        
         System.out.println(theGame.toString());
-        //System.out.println(inventoryItem.toString());
+        System.out.println(inventoryItem.toString());
         System.out.println(animal.toString());
         System.out.println(provision.toString());
         System.out.println(player.toString());
         System.out.println(author.toString());
+        System.out.println(storehouse.toString());
       
     }
     

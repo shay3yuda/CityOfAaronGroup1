@@ -3,10 +3,11 @@
  */
 package model;
 
+import java.util.Arrays;
 import java.io.Serializable;
 /**
  *
- * @author Brenda
+ * @author estherhsia
  */
 public class Storehouse implements Serializable {
     
@@ -54,7 +55,7 @@ public class Storehouse implements Serializable {
     @Override
     public String toString() {
         return "Storehouse {" 
-                + " authors = " + authors 
+                + " authors = " + Arrays.toString(authors) 
                 + ", animals = " + animals 
                 + ", tools = " + tools 
                 + ", provisions = " + provisions 

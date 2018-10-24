@@ -33,44 +33,37 @@ public class WheatControl {
         if (chanceOfRats >= 30) {
             return 0;
         }
+     
+  
+        int high = 2;
+        int low = 1;
         
-      
-        //if tithingPercent < 8 then low = 6, high = 10
-
-
+        //if tithingPercent < 8 then low = 6, high = 10        
         if (tithesPercent < 8) {
-            double lossToRats = GameControl.getRandomNumber(6,10);
-            double percentLost = lossToRats * 0.01;
-            int bushelsLost = (int)(wheatInStorage * percentLost);
-            return bushelsLost; 
-        }
-        
+            low = 6;
+            high = 10;
+        } 
         
         //if tithingPercent >= 8 AND tithingPercent <= 12 then low = 3, high = 7
-        //percentLost = getRandomNumber(low, high)*0.01 //turn into a fraction
         if (tithesPercent >= 8 && tithesPercent <= 12) {
-            double lossToRats = GameControl.getRandomNumber(3,7);
-            double percentLost = lossToRats * 0.01;
-            int bushelsLost = (int)(wheatInStorage * percentLost);
-            return bushelsLost; 
-        }
+            low = 3;
+            high = 7;
+        } 
         
-        //if tithingPercent > 12 then low = 3, high = 5
-        //percentLost = getRandomNumber(low, high)*0.01 //turn into a fraction
+        //if tithingPercent > 12 then low = 3, high = 5        
         if (tithesPercent > 12) {
-            double lossToRats = GameControl.getRandomNumber(3,5);
-            double percentLost = lossToRats * 0.01;
-            int bushelsLost = (int)(wheatInStorage * percentLost);
-            return bushelsLost; 
-        }
-       
-        //percentLost = getRandomNumber(low, high)*0.01 //turn into a fraction
-    //    percentLost = lossToRats * 0.01;
+            low = 3;
+            high = 5;
+        }   
         
-           //return wheatInStorage * percentLost //will need to be cast back to int
-    //    int bushelsLost = wheatInStorage * percentLost;
-        //return bushelsLost;
-        return -100;
+        //percentLost = getRandomNumber(low, high)*0.01 //turn into a fraction        
+        int lossToRats = GameControl.getRandomNumber(low,high);
+        double percentLost = lossToRats * 0.01;
+        
+        //return wheatInStorage * percentLost //will need to be cast back to int        
+        int bushelsLost = (int)(wheatInStorage * percentLost);
+        return bushelsLost; 
+
     }
     
 }

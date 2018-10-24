@@ -25,7 +25,7 @@ public class WheatControlTest {
         System.out.println("calculateLossToRats");
         int tithesPercent = 10;
         int wheatInStorage = 105;
-        int expResult = 4;
+        int expResult = 5;
         int result = WheatControl.calculateLossToRats(tithesPercent, wheatInStorage);
         assertEquals(expResult, result);
 

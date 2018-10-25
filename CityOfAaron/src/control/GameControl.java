@@ -55,7 +55,7 @@ public class GameControl {
         
         //return low + random(range size)
         return min + randomGenerator.nextInt(range);
-
+  
     }
     
 }

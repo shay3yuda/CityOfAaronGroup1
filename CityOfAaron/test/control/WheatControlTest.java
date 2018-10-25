@@ -19,7 +19,7 @@ public class WheatControlTest {
 
     /**
      * Test of calculateLossToRats method, of class WheatControl.
-     */
+     */ 
     @Test
     public void testCalculateLossToRatscase1() {
         System.out.println("calculateLossToRats");
@@ -60,4 +60,46 @@ public class WheatControlTest {
         int result = WheatControl.calculateLossToRats(13, 5000);
         assertEquals(250, result);
     }
+
+ 
+
+    /**
+     * Test to calculateHarvest function, of class WheatControl.
+     */
+    
+    @Test
+    public void calculateHarvest1() {
+        int result = WheatControl.calculateHarvest(12, 100);
+        assertEquals (500, result);   
+    }
+    
+    @Test
+    public void calculateHarvest2() {
+        int result = WheatControl.calculateHarvest(12, -1);
+        assertEquals (-1, result);   
+    }
+    
+    @Test
+    public void calculateHarvest3() {
+        int result = WheatControl.calculateHarvest(-1, 100);
+        assertEquals (-2, result);   
+    }
+    
+    @Test
+    public void calculateHarvest4() {
+        int result = WheatControl.calculateHarvest(101, 100);
+        assertEquals (-2, result);   
+    }
+     
+    @Test
+    public void calculateHarvest5() {
+        int result = WheatControl.calculateHarvest(0, 0);
+        assertEquals (0, result);   
+    }
+    
+    @Test
+    public void calculateHarvest6() {
+        int result = WheatControl.calculateHarvest(99, 150);
+        assertEquals (750, result);   
+    } 
 }

@@ -69,8 +69,13 @@ public class WheatControlTest {
     
     @Test
     public void calculateHarvest1() {
-        int result = WheatControl.calculateHarvest(12, 100);
-        assertEquals (500, result);   
+        //int result = WheatControl.calculateHarvest(13, 100);
+        
+        FakeRandom fakeRandom = new FakeRandom();
+        GameControl.setRandomGenerator(fakeRandom);
+        fakeRandom.add(3);
+        
+        assertEquals(500,  WheatControl.calculateHarvest(12, 100));   
     }
     
     @Test
@@ -99,7 +104,11 @@ public class WheatControlTest {
     
     @Test
     public void calculateHarvest6() {
-        int result = WheatControl.calculateHarvest(99, 150);
-        assertEquals (750, result);   
+        
+        FakeRandom fakeRandom = new FakeRandom();
+        GameControl.setRandomGenerator(fakeRandom);
+        fakeRandom.add(3);
+        
+        assertEquals (750, WheatControl.calculateHarvest(99, 150));   
     } 
 }

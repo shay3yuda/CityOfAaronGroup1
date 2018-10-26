@@ -17,7 +17,7 @@ public class TestFakeRandom {
         FakeRandom fakeRandom = new FakeRandom();
         
         //Stuff the fake random wiht a few test values.
-        fakeRandom.add(1);
+        //fakeRandom.add(1);
         fakeRandom.add(5);
         
         //Yes, because this is a simple class used for testing, you can 

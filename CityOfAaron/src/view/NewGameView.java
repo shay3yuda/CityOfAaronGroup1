@@ -21,7 +21,7 @@ public class NewGameView {
      */
     public NewGameView(){
         
-        message = "Please enter your name.\n";
+        message = "Creating a new game:\n";
                 
     }
     

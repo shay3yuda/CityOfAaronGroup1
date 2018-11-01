@@ -21,9 +21,14 @@ public class StartProgramView {
     public StartProgramView(){
         
         message = "Welcome to the city of Aaron.\n"
-                + "You have just been installed as the new ruler of this city. Your responsiblities include: \n"
-                + "Buying and selling land, determining how much wheat to plant, and how much wheat to feed your people. You may also choose to pay annaul tithing on the wheat harvest.\n"
-                + "Choose wisely! Based on your choices, some of your workforce may starve to death. Be aware that you may lose some of your harvest to rats.\n";         
+                + "You have just been installed as the new ruler of this city.\n"  
+                + "Your responsiblities include:\n" 
+                + "- Buying and selling land\n"
+                + "- Determining how much wheat to plant\n"
+                + "- Determining how much wheat to feed your people\n"
+                + "- Deciding how much annual tithing to pay on the wheat harvest\n"
+                + "Choose wisely! Based on your choices, some of your workforce may starve to death.\n"
+                + "Be aware that you may lose some of your harvest to rats.\n";         
     }
     
     

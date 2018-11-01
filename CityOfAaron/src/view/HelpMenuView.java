@@ -27,7 +27,7 @@ public class HelpMenuView {
                 + "V - How do I view the Map?\n"
                 + "L - How do I move to another Location?\n"
                 + "S - How do I display a list of animals, provisions, and tools in the city Storehouse?\n"
-                + "M - Back to the Main Menu";
+                + "M - Back to the Main Menu\n";
                 
     }
     
@@ -103,19 +103,19 @@ public class HelpMenuView {
     public boolean doAction(String[] inputs){
         switch(inputs[0].trim().toUpperCase()){
             case "G":
-                System.out.println("Message about Goals of the Game");
+                System.out.println("Manage your resources wisely and remain ruler for 10 years.\n");
                 break;   
             case "C":
-                System.out.println("Messages about where the City of Aaron is");
+                System.out.println("Messages about where the City of Aaron is\n");
                 break;
             case "V":
-                System.out.println("Message about how to view the Map");
+                System.out.println("Message about how to view the Map\n");
                 break;
             case "L":
-                System.out.println("Message about how to move to another Location");
+                System.out.println("Message about how to move to another Location\n");
                 break;
             case "S":
-                System.out.println("Message about how to display the list of items in the Storehouse");
+                System.out.println("Message about how to display the list of items in the Storehouse\n");
                 break;
             case "M":
                 MainMenuView mainMenu = new MainMenuView();

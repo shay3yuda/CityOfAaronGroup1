@@ -80,7 +80,7 @@ public class NewGameView {
         // from the user.
         String[] inputs = new String[1];
         
-        inputs[0] = getUserInput("Please enter your name OR press Enter to go back to the Main Menu");
+        inputs[0] = getUserInput("Please enter your name OR press Enter to go back to the Main Menu:", true);
         
         // Repeat for each input you need, putting it into its proper slot in the array.
         

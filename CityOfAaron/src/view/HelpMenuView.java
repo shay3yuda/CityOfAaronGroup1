@@ -118,8 +118,6 @@ public class HelpMenuView {
                 System.out.println("Message about how to display the list of items in the Storehouse\n");
                 break;
             case "M":
-                MainMenuView mainMenu = new MainMenuView();
-                mainMenu.displayView();
                 return false;
         } 
         

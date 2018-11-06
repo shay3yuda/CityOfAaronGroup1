@@ -6,6 +6,7 @@
 package control;
 
 import java.util.Random;
+import model.Game;
 
 /**
  *
@@ -56,6 +57,13 @@ public class GameControl {
         //return low + random(range size)
         return min + randomGenerator.nextInt(range);
   
+    }
+    
+    public static String loadGameFromFile(String filename) {
+        // place holder function.
+       String name = filename;
+        
+       return name;
     }
     
 //    public static String createNewGame(String playerName) {

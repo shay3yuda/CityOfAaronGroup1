@@ -177,7 +177,8 @@ public class GameMenuView {
     }
     
     private void manageCrops() {
-        System.out.println("manageCrops() called. Implementation coming soon");
+        ManageCropMenuView manageCropsMenu = new ManageCropMenuView();
+        manageCropsMenu.displayView();
     }
     
     private void liveYear() {
@@ -190,6 +191,7 @@ public class GameMenuView {
     }
     
     private void saveGame() {
-        System.out.println("saveGame() called. Implementation coming soon");
+        SaveGameView saveGame = new SaveGameView();
+        saveGame.displayView();
     }
 }

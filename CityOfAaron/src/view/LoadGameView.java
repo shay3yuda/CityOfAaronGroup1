@@ -2,13 +2,13 @@
 package view;
 
 import java.util.Scanner;
-
+import control.GameControl;
 
 /**
  *
- * 
+ * @author kanderson
  */
-public class MainMenuView {
+public class LoadGameView {
     
     
     /**
@@ -19,14 +19,9 @@ public class MainMenuView {
     /**
      * Constructor
      */
-    public MainMenuView(){
+    public LoadGameView(){
         
-        message = "Main Menu\n"
-                + "-----------------------\n"
-                + "N - Start a New Game\n"
-                + "L - Load a Saved Game\n"
-                + "H - Help Menu\n"
-                + "Q - Quit\n";
+        message = "Load a Saved Game.\n";
                 
     }
     
@@ -85,7 +80,9 @@ public class MainMenuView {
         // from the user.
         String[] inputs = new String[1];
         
-        inputs[0] = getUserInput("What would you like to do?");
+        inputs[0] = getUserInput("Enter the name of the Saved Game\n"
+                                    + "\t\tOR\n"
+                                    + "Press Enter to return to the Main Menu", true);
         
         // Repeat for each input you need, putting it into its proper slot in the array.
         
@@ -100,27 +97,14 @@ public class MainMenuView {
      * should exit and return to the previous view.
      */
     public boolean doAction(String[] inputs){
-        // Act on the user's input.
-        // This is a "dispatch" function that decides what
-        // other functions to call. You can use an if-, if-else,
-        // or switch statement.
         
-        // return false if you want this view to exit and return
-        // to the view that called it.
-        switch(inputs[0].trim().toUpperCase()){
-            case "N":
-                startNewGame();
-                break;   
-            case "L":
-                loadSavedGame();
-                break;
-            case "H":
-                helpMenu();
-                break;
-            case "Q":
-                System.out.println("See you later!");
-                return false;
-        } 
+         if(inputs[0] == null || inputs[0].equals("")) {
+            System.out.println("No Game Name entered; returning to the Main Menu\n");
+            return false;
+        }
+        
+        String gameName = inputs[0];
+        loadSavedGameFromName(gameName);
         
         return true;
     }
@@ -142,18 +126,22 @@ public class MainMenuView {
         }
     }
     
-    private void startNewGame() {
-        NewGameView view = new NewGameView();
-        view.displayView();
-    }
     
-    private void helpMenu() {
-        HelpMenuView helpMenu = new HelpMenuView();
-        helpMenu.displayView();
-    }
+    // Define your action handlers here. These are the methods that your doAction()
+    // method will call based on the user's input. We don't want to do a lot of 
+    // complex game stuff in our doAction() method. It will get messy very quickly.
     
-    private void loadSavedGame() {
-        LoadGameView loadGame = new LoadGameView();
-        loadGame.displayView();
+    
+    private void loadSavedGameFromName(String gameName){
+      //not sure if the function is called correctly...
+        GameControl theGame = new GameControl();
+        theGame.loadGameFromFile(gameName);
+        
+        System.out.println("loadGameFromFile() called, implementation coming soon.\n");
+        
+        GameMenuView gameMenu = new GameMenuView();
+        gameMenu.displayView();
+      
     }
 }
+

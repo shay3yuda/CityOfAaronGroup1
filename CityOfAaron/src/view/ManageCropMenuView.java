@@ -3,12 +3,11 @@ package view;
 
 import java.util.Scanner;
 
-
 /**
  *
- * 
+ * @author kanderson
  */
-public class MainMenuView {
+public class ManageCropMenuView {
     
     
     /**
@@ -19,14 +18,16 @@ public class MainMenuView {
     /**
      * Constructor
      */
-    public MainMenuView(){
+    public ManageCropMenuView(){
         
-        message = "Main Menu\n"
-                + "-----------------------\n"
-                + "N - Start a New Game\n"
-                + "L - Load a Saved Game\n"
-                + "H - Help Menu\n"
-                + "Q - Quit\n";
+        message = "Crop Management Menu\n"
+                + "----------------------\n"
+                + "B - Buy Land\n"
+                + "S - Sell Land\n"
+                + "F - Feed the People\n"
+                + "P - Plant Crops\n"
+                + "T - Pay Tithes and Offereings\n"
+                + "M - Return to the Game Menu\n";
                 
     }
     
@@ -108,18 +109,22 @@ public class MainMenuView {
         // return false if you want this view to exit and return
         // to the view that called it.
         switch(inputs[0].trim().toUpperCase()){
-            case "N":
-                startNewGame();
+            case "B":
+                System.out.println("buyLand() called\n");
                 break;   
-            case "L":
-                loadSavedGame();
+            case "S":
+                System.out.println("sellLand() called\n");
                 break;
-            case "H":
-                helpMenu();
+            case "F":
+                System.out.println("FeedPeople() called\n");
                 break;
-            case "Q":
-                System.out.println("See you later!");
+            case "T":
+                System.out.println("PayTithes() called\n");
                 return false;
+            case "M":    
+            GameMenuView gameMenu = new GameMenuView();
+                gameMenu.displayView();
+                return false;    
         } 
         
         return true;
@@ -142,18 +147,4 @@ public class MainMenuView {
         }
     }
     
-    private void startNewGame() {
-        NewGameView view = new NewGameView();
-        view.displayView();
-    }
-    
-    private void helpMenu() {
-        HelpMenuView helpMenu = new HelpMenuView();
-        helpMenu.displayView();
-    }
-    
-    private void loadSavedGame() {
-        LoadGameView loadGame = new LoadGameView();
-        loadGame.displayView();
-    }
 }

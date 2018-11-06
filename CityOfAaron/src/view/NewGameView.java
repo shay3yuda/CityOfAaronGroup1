@@ -143,7 +143,7 @@ public class NewGameView {
             + "we're just going to send you back to the Main Menu.\n");
         
         //Once the GameMenuView is created, we will call it here.
-        //GameMenuView gameMenu = new GameMenuView();
-        //gameMenu.displayView();
+        GameMenuView gameMenu = new GameMenuView();
+        gameMenu.displayView();
     }
 }

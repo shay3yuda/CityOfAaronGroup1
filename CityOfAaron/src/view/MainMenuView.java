@@ -153,6 +153,6 @@ public class MainMenuView {
     }
     
     private void loadSavedGame() {
-        System.out.println("loadSavedGame() called. Implementaton coming soon");
+        System.out.println("loadSavedGame() called. Implementation coming soon");
     }
 }

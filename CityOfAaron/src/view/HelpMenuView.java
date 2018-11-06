@@ -27,7 +27,7 @@ public class HelpMenuView {
                 + "V - How do I view the Map?\n"
                 + "L - How do I move to another Location?\n"
                 + "S - How do I display a list of animals, provisions, and tools in the city Storehouse?\n"
-                + "M - Back to the Main Menu\n";
+                + "M - Return to the Main Menu\n";
                 
     }
     

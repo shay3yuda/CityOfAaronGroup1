@@ -2,6 +2,7 @@
 package view;
 
 import java.util.Scanner;
+import control.GameControl;
 
 /**
  *
@@ -9,7 +10,12 @@ import java.util.Scanner;
  */
 public class GameMenuView {
     
-    
+//    private void annualReportView() {
+//        System.out.println("annualReportView() called. Implementation coming soon");        
+//    AnnualReportView annualReport = new AnnualReportView();
+//    annualReport.displayView();
+//    }
+
     /**
      * The message that will be displayed by this view.
      */
@@ -20,7 +26,7 @@ public class GameMenuView {
      */
     public GameMenuView(){
         
-        message = "Game Menu\n"
+        message ="Game Menu\n"
                 + "----------------------\n"
                 + "V - View the Map\n"
                 + "L - Move to a new Location\n"
@@ -146,7 +152,15 @@ public class GameMenuView {
         boolean keepGoing = true;
         
         while(keepGoing == true){
-            
+            System.out.println("Annual Report called. Implementation coming soon.");
+//          System.out.println(GameControl.getLiveTheYear);   
+            //pause for a couple of seconds
+            try {
+              Thread.sleep(2000);
+            }
+             catch(InterruptedException exception) {
+              //ignore for now
+            }
             System.out.println(message);
             String[] inputs = getInputs();
             keepGoing = doAction(inputs);
@@ -171,7 +185,8 @@ public class GameMenuView {
     }
     
     private void reportsMenu() {
-        System.out.println("reportsMenu() called. Implementation coming soon");
+        ReportsMenuView reportsMenu = new ReportsMenuView();
+        reportsMenu.displayView();
     }
     
     private void saveGame() {

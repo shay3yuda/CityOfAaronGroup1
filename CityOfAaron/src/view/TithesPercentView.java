@@ -78,8 +78,8 @@ public class TithesPercentView {
         // Declare the array to have the number of elements you intend to get 
         // from the user.
         String[] inputs = new String[1];
-        
-        inputs[0] = getUserInput("Enter a number that will be your tithing percent.");
+        inputs[0] = getUserInput("Enter a number that will be the percent of your harvest that you pay in tithing.");
+
         
         // Repeat for each input you need, putting it into its proper slot in the array.
         
@@ -101,15 +101,28 @@ public class TithesPercentView {
         
         // return false if you want this view to exit and return
         // to the view that called it.
+  
+        int int1 = 0;
+        boolean inputValid = false;
+
+           try {
+           int1 = Integer.parseInt(inputs[0]);
+           if (int1 < 0) {
+               System.out.println("Please enter a positive number.");
+           } else if (int1 > 100) {
+               System.out.println("Please enter a number that is not greater than 100.");
+           } else {
+               inputValid = true;
+               saveTithing(int1);
+           }
+           } catch(NumberFormatException ex) {
+               System.out.println("Please enter a number.");
+           }
+
+
+             
         
-//        isNumber();
-//        if(!isNumber) {
-//            System.out.println("Please enter a valid number.");
-//        } else {
-//            
-//        }
-        
-        return true;
+        return !inputValid;
     }
 
     
@@ -146,16 +159,12 @@ public class TithesPercentView {
         
         return true;
     }
+    private void saveTithing(int tithingPercent) {
+        //stub function, to be completed after AnnualReport is implemented 
+        System.out.println("Saving tithing percent");
+    }
     
-//    public boolean isNumber(String[] inputs) {
-//        try {
-//            Integer.parseInt(inputs);
-//        }
-//        catch(NumberFormatException ex) {
-//            return false;
-//        }
-//        return true;    
-//    }
+
     
 }
 

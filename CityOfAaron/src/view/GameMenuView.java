@@ -165,7 +165,7 @@ public class GameMenuView {
             }
             if (GameControl.gameShouldEnd(0)) { //when fully implemented, this will contain mortality rate from annual report
                 System.out.println("More than 50% of your population died, therefore this game is over. Repent and try again.");
-                startOver();
+            //    startOver();
             } else {
                 System.out.println(message);
                 String[] inputs = getInputs();

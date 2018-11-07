@@ -120,7 +120,9 @@ public class ManageCropMenuView {
                 System.out.println("FeedPeople() called\n");
                 break;
             case "T":
-                System.out.println("PayTithes() called\n");
+                //System.out.println("PayTithes() called\n");
+                TithesPercentView tithesPercent = new TithesPercentView();
+                tithesPercent.displayView();
                 break;
             case "M":    
                 return false;

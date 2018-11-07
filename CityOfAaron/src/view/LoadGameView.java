@@ -80,8 +80,8 @@ public class LoadGameView {
         // from the user.
         String[] inputs = new String[1];
         
-        inputs[0] = getUserInput("Enter the name of the Saved Game\n"
-                                    + "\t\tOR\n"
+        inputs[0] = getUserInput("Enter the name of the Saved your game\n"
+                                    + "\t\t-OR-\n"
                                     + "Press Enter to return to the Main Menu", true);
         
         // Repeat for each input you need, putting it into its proper slot in the array.

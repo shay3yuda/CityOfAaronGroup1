@@ -3,6 +3,7 @@ package view;
 
 import java.util.Scanner;
 
+
 /**
  *
  * @author kanderson
@@ -120,11 +121,10 @@ public class ManageCropMenuView {
                 break;
             case "T":
                 System.out.println("PayTithes() called\n");
-                return false;
+                break;
             case "M":    
-            GameMenuView gameMenu = new GameMenuView();
-                gameMenu.displayView();
-                return false;    
+                return false;
+                    
         } 
         
         return true;

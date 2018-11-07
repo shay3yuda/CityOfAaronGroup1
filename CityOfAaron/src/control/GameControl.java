@@ -66,6 +66,11 @@ public class GameControl {
        return name;
     }
     
+    public static boolean gameShouldEnd(int mortalityRate) {
+        //stub function that will be implemented fully later
+        return false;
+    }
+    
 //    public static String createNewGame(String playerName) {
 //        
 //    }

@@ -3,6 +3,7 @@ package view;
 
 import java.util.Scanner;
 import control.GameControl;
+import view.MainMenuView;
 
 /**
  *
@@ -126,7 +127,7 @@ public class GameMenuView {
                 manageCrops();
                 break;
             case "Y":
-                liveYear();
+                liveTheYear();
                 break;   
             case "R":
                 reportsMenu();
@@ -135,7 +136,6 @@ public class GameMenuView {
                 saveGame();
                 break;                
             case "M":
-                //returning false will return to Main Menu
                 return false;
         }
         
@@ -154,16 +154,23 @@ public class GameMenuView {
         while(keepGoing == true){
             System.out.println("Annual Report called. Implementation coming soon.");
 //          System.out.println(GameControl.getLiveTheYear);   
-            //pause for a couple of seconds
+
+
+            //pause for a couple of seconds            
             try {
               Thread.sleep(2000);
             }
              catch(InterruptedException exception) {
               //ignore for now
             }
-            System.out.println(message);
-            String[] inputs = getInputs();
-            keepGoing = doAction(inputs);
+            if (GameControl.gameShouldEnd(0)) { //when fully implemented, this will contain mortality rate from annual report
+                System.out.println("More than 50% of your population died, therefore this game is over. Repent and try again.");
+                startOver();
+            } else {
+                System.out.println(message);
+                String[] inputs = getInputs();
+                keepGoing = doAction(inputs);
+            }
         }
     }
     
@@ -181,8 +188,8 @@ public class GameMenuView {
         manageCropsMenu.displayView();
     }
     
-    private void liveYear() {
-        System.out.println("liveYear() called. Implementation coming soon");
+    private void liveTheYear() {
+        System.out.println("liveTheYear() called. Implementation coming soon");
     }
     
     private void reportsMenu() {
@@ -193,5 +200,10 @@ public class GameMenuView {
     private void saveGame() {
         SaveGameView saveGame = new SaveGameView();
         saveGame.displayView();
+    }
+      
+    private void startOver() {
+        StartProgramView startOver = new StartProgramView();
+        startOver.displayView();
     }
 }

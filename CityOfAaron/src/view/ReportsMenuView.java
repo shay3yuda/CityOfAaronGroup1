@@ -85,7 +85,7 @@ public class ReportsMenuView {
         // from the user.
         String[] inputs = new String[1];
         
-        inputs[0] = getUserInput("What option would you like to view?");
+        inputs[0] = getUserInput("Which report would you like to view?");
         
         // Repeat for each input you need, putting it into its proper slot in the array.
         
@@ -122,8 +122,6 @@ public class ReportsMenuView {
                 break;
             case "Q":
                 System.out.println("Returning to Game Menu\n");
-                GameMenuView gameMenu = new GameMenuView();
-                gameMenu.displayView();
                 return false;
         } 
         
@@ -168,7 +166,7 @@ public class ReportsMenuView {
     }
     
     private void authorsOfGame() {
-        System.out.println("suthorsOfGame() called, implementation coming soon!\n");
+        System.out.println("authorsOfGame() called, implementation coming soon!\n");
         saveReport();
     }
     
@@ -182,8 +180,7 @@ public class ReportsMenuView {
         
         switch(inputs[0].trim().toUpperCase()) {
             case "Y":
-                SaveGameView saveGame = new SaveGameView();
-                saveGame.displayView();
+                System.out.println("GameControl.saveReportToFile() called, implementation coming soon.\n");
                 break;   
             case "N":
                 displayView();

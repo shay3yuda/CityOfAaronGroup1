@@ -95,12 +95,9 @@ public class SaveGameView {
     public boolean doAction(String[] inputs){
         
         // call control method
-        System.out.println("saveGameToFile() called, implementation coming soon.\n");
+        System.out.println("GameControl.saveGameToFile() called, implementation coming soon.\n");
         
-        GameMenuView gameMenu = new GameMenuView();
-        gameMenu.displayView();
-        
-        return true;
+        return false;
     }
     
     

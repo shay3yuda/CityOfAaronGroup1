@@ -116,6 +116,7 @@ public class GameMenuView {
         
         // return false if you want this view to exit and return
         // to the view that called it.
+
         switch(inputs[0].trim().toUpperCase()){
             case "V":
                 mapView();
@@ -152,25 +153,16 @@ public class GameMenuView {
         boolean keepGoing = true;
         
         while(keepGoing == true){
-            System.out.println("Annual Report called. Implementation coming soon.");
-//          System.out.println(GameControl.getLiveTheYear);   
+            getAnnualReport();
 
-
-            //pause for a couple of seconds            
-            try {
-              Thread.sleep(2000);
-            }
-             catch(InterruptedException exception) {
-              //ignore for now
-            }
             if (GameControl.gameShouldEnd(0)) { //when fully implemented, this will contain mortality rate from annual report
-                System.out.println("More than 50% of your population died, therefore this game is over. Repent and try again.");
-            //    startOver();
-            } else {
-                System.out.println(message);
-                String[] inputs = getInputs();
-                keepGoing = doAction(inputs);
+                System.out.println("The game is ended. Details on your game status will be implemented later."); 
+                //TODO: create a specific message for the endgame
+                return;
             }
+            System.out.println(message);
+            String[] inputs = getInputs();
+            keepGoing = doAction(inputs);
         }
     }
     
@@ -201,9 +193,9 @@ public class GameMenuView {
         SaveGameView saveGame = new SaveGameView();
         saveGame.displayView();
     }
-      
-    private void startOver() {
-        StartProgramView startOver = new StartProgramView();
-        startOver.displayView();
+         
+    private void getAnnualReport() {
+        //stub function
+        System.out.println("Annual Report called. Implementation coming soon.");
     }
 }

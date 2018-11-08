@@ -13,24 +13,27 @@ import model.Game;
  * @author Brenda
  */
 public class GameControl {
-    
+
     private static Random randomGenerator = new Random();
-    
+
     /**
      * Protected setter for tests to inject a mock random object.
-     * @param random 
+     *
+     * @param random
      */
     protected static void setRandomGenerator(Random random) {
         randomGenerator = random;
     }
-    
+
     /**
      * Generates a random integer between min and max, inclusive
      * <ul>Requirements:
      * <li>min and max must be positive integers (return -1)</li>
      * <li>max must be greater than min (return -2)</li>
-     * <li>max cannot be equal to the maximum value for integers (return -3)</li>
+     * <li>max cannot be equal to the maximum value for integers (return
+     * -3)</li>
      * </ul>
+     *
      * @param min
      * @param max
      * @return The random number
@@ -40,47 +43,52 @@ public class GameControl {
         if (min < 0 || max < 0) {
             return -1;
         }
-        
+
         //if max <= min then return -2
         if (max <= min) {
             return -2;
         }
-        
+
         //if max is the maximum value for integers, then return -3
         if (max == Integer.MAX_VALUE) {
             return -3;
         }
-        
+
         //calculate the size of the range; add one so Random() includes high value
         int range = (max - min) + 1;
-        
+
         //return low + random(range size)
         return min + randomGenerator.nextInt(range);
-  
+
     }
-    
+
     public static String loadGameFromFile(String filename) {
         // place holder function.
-       String name = filename;
-        
-       return name;
+        String name = filename;
+
+        return name;
     }
-    
+
     public static boolean gameShouldEnd(int mortalityRate) {
         //stub function that will be implemented fully later
+        if (mortalityRate > 0) {
+            System.out.println("More than 50% of your population died, therefore this game is over. Repent and try again.");
+
+            return true;
+        } 
+        //TODO create end of game (10 years are up) if statement, message, and exit the game 
         return false;
     }
-    
+
     public static void saveGameToFile(Game game, String filename) {
-         //stub function that will be implamented later
+        //stub function that will be implamented later
     }
-    
+
     public static void saveReportToFile(String[] filename) {
-        
+
     }
-    
+
 //    public static String createNewGame(String playerName) {
 //        
 //    }
-    
 }

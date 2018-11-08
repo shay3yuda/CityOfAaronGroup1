@@ -118,10 +118,8 @@ public class TithesPercentView {
            } catch(NumberFormatException ex) {
                System.out.println("Please enter a number.");
            }
-
-
-             
-        
+          
+       
         return !inputValid;
     }
 
@@ -147,18 +145,7 @@ public class TithesPercentView {
     // Define your action handlers here. These are the methods that your doAction()
     // method will call based on the user's input. We don't want to do a lot of 
     // complex game stuff in our doAction() method. It will get messy very quickly.
-    
-    
-    private boolean someActionHandler(){
-        // Define whatever code you need here to accomplish the action.
-        // You can make this a void method if you want. Whatever you need 
-        // here, you are free to do.
-        //
-        // Generally, though, this is where you will call into your Control
-        // classes to do the work of the application.
-        
-        return true;
-    }
+
     private void saveTithing(int tithingPercent) {
         //stub function, to be completed after AnnualReport is implemented 
         System.out.println("Saving tithing percent");

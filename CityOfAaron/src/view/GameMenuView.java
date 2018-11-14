@@ -149,7 +149,7 @@ public class GameMenuView extends ViewBase {
 
     private void getAnnualReport() {
         //TODO getAnnualReport stub function needs to be fully implemented to have variables instead of static information.
-        System.out.println("Annual Report\n"   
+        System.out.println("Annual Report\n"
                 + "----------------------\n"
                 + "The Year Number is 1.\n"
                 + "0 people starved.\n"
@@ -161,7 +161,7 @@ public class GameMenuView extends ViewBase {
                 + "The number of bushels paid in tithes and offerings is 300.\n"
                 + "The number of bushels of wheat eaten by rats is 0.\n"
                 + "The number of bushels of wheat in store is 2700.\n");
-    
+
         //Version with variables:
         //"Annual Report\n"
         //+ "----------------------\n"

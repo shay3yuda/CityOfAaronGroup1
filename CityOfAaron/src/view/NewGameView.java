@@ -1,7 +1,6 @@
 
 package view;
 
-import java.util.Scanner;
 import model.Player;
 import model.Game;
 import cityofaaron.CityOfAaron;

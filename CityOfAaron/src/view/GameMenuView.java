@@ -20,7 +20,7 @@ public class GameMenuView extends ViewBase {
     public GameMenuView() {
         //empty constructor
     }
-    
+
     @Override
     protected String getMessage() {
         return "Game Menu\n"
@@ -98,7 +98,7 @@ public class GameMenuView extends ViewBase {
      * Control this view's display/prompt/action loop until the user chooses and
      * action that causes this view to close.
      */
-    @Override
+    @Override //using this override to place getAnnualReport inside displayView while loop. Remove this entire block if move annual report to getMessage()
     public void displayView() {
 
         boolean keepGoing = true;
@@ -106,9 +106,7 @@ public class GameMenuView extends ViewBase {
         while (keepGoing == true) {
             getAnnualReport();
 
-            if (GameControl.gameShouldEnd(0)) { //when fully implemented, this will contain mortality rate from annual report
-                System.out.println("The game is ended. Details on your game status will be implemented later.");
-                //TODO: create a specific message for the endgame
+            if (GameControl.gameShouldEnd(0, 1)) { //TODO when fully implemented, this will contain mortality rate and currentYear from annual report 
                 return;
             }
             // get message that should be displayed
@@ -150,7 +148,32 @@ public class GameMenuView extends ViewBase {
     }
 
     private void getAnnualReport() {
-        //stub function
-        System.out.println("Annual Report called. Implementation coming soon."); //TODO getAnnualReport stub function needs to be fully implemented
+        //TODO getAnnualReport stub function needs to be fully implemented to have variables instead of static information.
+        System.out.println("Annual Report\n"   
+                + "----------------------\n"
+                + "The Year Number is 1.\n"
+                + "0 people starved.\n"
+                + "5 people moved into the city.\n"
+                + "The current population is 100.\n"
+                + "The number of acres of land owned by the city is 1000.\n"
+                + "The number of bushels per acre in this year's harvest is 3.\n"
+                + "The total number of bushels of wheat harvested is 3000.\n"
+                + "The number of bushels paid in tithes and offerings is 300.\n"
+                + "The number of bushels of wheat eaten by rats is 0.\n"
+                + "The number of bushels of wheat in store is 2700.\n");
+    
+        //Version with variables:
+        //"Annual Report\n"
+        //+ "----------------------\n"
+        //+ "The Year Number is " + yearNumber + "."\n"
+        //+ peopleStarved + "people starved.\n"
+        //+ peopleMovedIn + "people moved into the city.\n"
+        //+ "The current population is " + currentPopulation + ".\n"
+        //+ "The number of acres of land owned by the city is " + acresOwned + ".\n"
+        //+ "The number of bushels per acre in this year's harvest is " + acreYield + ".\n"
+        //+ "The total number of bushels of wheat harvested is " + harvested + ".\n" 
+        //+ "The number of bushels paid in tithes and offerings is " + tithingAmount + ".\n"
+        //+ "The number of bushels of wheat eaten by rats is " + lossToRats + ".\n"
+        //+ "The number of bushels of wheat in store is " + totalWheat + ".\";
     }
 }

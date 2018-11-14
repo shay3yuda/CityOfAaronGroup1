@@ -17,8 +17,7 @@ public class PeopleControlTest {
      * Test of calculateMortality method, of class PeopleControl.
      */
     @Test
-    public void validRangeTest() {
-        System.out.println("calculateMortality");
+    public void validInputTest() {
         int bushelsForFood = 1000;
         int currentPopulation = 55;
         int expResult = 5;
@@ -46,13 +45,13 @@ public class PeopleControlTest {
     }
     
     @Test
-    public void boundaryTest1() {
+    public void lowBoundaryTest() {
         int result = PeopleControl.calculateMortality(0, 88);
         assertEquals(88, result);
     }
     
     @Test
-    public void boundaryTest2() {
+    public void highBoundaryTest() {
         int result = PeopleControl.calculateMortality(1500, 70);
         assertEquals(0, result);
     }

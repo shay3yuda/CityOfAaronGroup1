@@ -1,7 +1,5 @@
-
 package view;
 
-import java.util.Scanner;
 import control.GameControl;
 import view.MainMenuView;
 
@@ -9,25 +7,23 @@ import view.MainMenuView;
  *
  * @author brenda
  */
-public class GameMenuView {
-    
-//    private void annualReportView() {
-//        System.out.println("annualReportView() called. Implementation coming soon");        
-//    AnnualReportView annualReport = new AnnualReportView();
-//    annualReport.displayView();
-//    }
+public class GameMenuView extends ViewBase {
 
-    /**
-     * The message that will be displayed by this view.
-     */
-    protected String message;
-    
+//    private void annualReportView() {
+//        System.out.println("annualReportView() called. Implementation coming soon");
+//        AnnualReportView annualReport = new AnnualReportView();
+//        annualReport.displayView();
+//    }
     /**
      * Constructor
      */
-    public GameMenuView(){
-        
-        message ="Game Menu\n"
+    public GameMenuView() {
+        //empty constructor
+    }
+    
+    @Override
+    protected String getMessage() {
+        return "Game Menu\n"
                 + "----------------------\n"
                 + "V - View the Map\n"
                 + "L - Move to a new Location\n"
@@ -36,91 +32,46 @@ public class GameMenuView {
                 + "R - Reports Menu\n"
                 + "S - Save Game\n"
                 + "M - Return to the Main Menu\n";
-                
     }
-    
-    
-    /**
-     * Get the user's input. Keep prompting them until they enter a value.
-     * @param prompt
-     * @param allowEmpty - determine whether the user can enter no value (just a return key)
-     * @return 
-     */
-    protected String getUserInput(String prompt, boolean allowEmpty){
-        
-        Scanner keyboard = new Scanner(System.in);
-        String input = "";
-        boolean inputReceived = false;
-        
-        while(inputReceived == false){
-            
-            System.out.println(prompt);
-            input = keyboard.nextLine();
-            
-            // Make sure we avoid a null-pointer error.
-            if (input == null){
-                input = "";
-            }
-            
-            // Trim any trailing whitespace, including the carriage return.
-            input = input.trim();
-            
-            if (input.equals("") == false || allowEmpty == true){
-                inputReceived = true;
-            }
-        }
-        
-        return input;
-    }
-    
-    
-    /**
-     * An overloaded version of getUserInput that sets allowEmpty to false so we don't have 
-     * to type it ourselves.
-     * @param prompt
-     * @return 
-     */
-    protected String getUserInput(String prompt){
-        return getUserInput(prompt, false);
-    }
-    
+
     /**
      * Get the set of inputs from the user.
-     * @return 
+     *
+     * @return
      */
+    @Override
     public String[] getInputs() {
-        
+
         // Declare the array to have the number of elements you intend to get 
         // from the user.
         String[] inputs = new String[1];
-        
+
         inputs[0] = getUserInput("What would you like to do?");
-        
+
         // Repeat for each input you need, putting it into its proper slot in the array.
-        
         return inputs;
     }
-    
-    
+
     /**
      * Perform the action indicated by the user's input.
+     *
      * @param inputs
      * @return true if the view should repeat itself, and false if the view
      * should exit and return to the previous view.
      */
-    public boolean doAction(String[] inputs){
+    @Override
+    public boolean doAction(String[] inputs) {
         // Act on the user's input.
         // This is a "dispatch" function that decides what
         // other functions to call. You can use an if-, if-else,
         // or switch statement.
-        
+
         // return false if you want this view to exit and return
         // to the view that called it.
-
-        switch(inputs[0].trim().toUpperCase()){
+        switch (inputs[0].trim().toUpperCase()) {
             case "V":
                 mapView();
-                break;   
+                break;
             case "L":
                 moveNewLocation();
                 break;
@@ -129,73 +80,77 @@ public class GameMenuView {
                 break;
             case "Y":
                 liveTheYear();
-                break;   
+                break;
             case "R":
                 reportsMenu();
                 break;
             case "S":
                 saveGame();
-                break;                
+                break;
             case "M":
                 return false;
         }
-        
+
         return true;
     }
-    
-    
+
     /**
-     * Control this view's display/prompt/action loop until the user
-     * chooses and action that causes this view to close.
+     * Control this view's display/prompt/action loop until the user chooses and
+     * action that causes this view to close.
      */
-    public void displayView(){
-        
+    @Override
+    public void displayView() {
+
         boolean keepGoing = true;
-        
-        while(keepGoing == true){
+
+        while (keepGoing == true) {
             getAnnualReport();
 
             if (GameControl.gameShouldEnd(0)) { //when fully implemented, this will contain mortality rate from annual report
-                System.out.println("The game is ended. Details on your game status will be implemented later."); 
+                System.out.println("The game is ended. Details on your game status will be implemented later.");
                 //TODO: create a specific message for the endgame
                 return;
             }
-            System.out.println(message);
+            // get message that should be displayed
+            // only print if it is non-null
+            String message = getMessage();
+            if (message != null) {
+                System.out.println(getMessage());
+            }
             String[] inputs = getInputs();
             keepGoing = doAction(inputs);
         }
     }
-    
- 
+
     private void mapView() {
-        System.out.println("mapView() called. Implementation coming soon");
+        System.out.println("mapView() called. Implementation coming soon"); //TODO mapView stub function needs to be fully implemented
     }
-    
+
     private void moveNewLocation() {
-        System.out.println("moveNewLocation() called. Implementation coming soon");
+        System.out.println("moveNewLocation() called. Implementation coming soon"); //TODO moveNewLocation stub function needs to be fully implemented
     }
-    
+
     private void manageCrops() {
         ManageCropMenuView manageCropsMenu = new ManageCropMenuView();
         manageCropsMenu.displayView();
     }
-    
+
     private void liveTheYear() {
-        System.out.println("liveTheYear() called. Implementation coming soon");
+        System.out.println("liveTheYear() called. Implementation coming soon"); //TODO liveTheYear stub function needs to be fully implemented
     }
-    
+
     private void reportsMenu() {
         ReportsMenuView reportsMenu = new ReportsMenuView();
         reportsMenu.displayView();
     }
-    
+
     private void saveGame() {
         SaveGameView saveGame = new SaveGameView();
         saveGame.displayView();
     }
-         
+
     private void getAnnualReport() {
         //stub function
-        System.out.println("Annual Report called. Implementation coming soon.");
+        System.out.println("Annual Report called. Implementation coming soon."); //TODO getAnnualReport stub function needs to be fully implemented
     }
 }

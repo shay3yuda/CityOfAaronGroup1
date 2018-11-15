@@ -58,11 +58,11 @@ public class BuyLandView extends ViewBase {
                 acreNum = Integer.parseInt(inputs[0]);
             if (acreNum < 0) {
                 System.out.println("Please enter a positive number.");
-            }else {
+            } else {
                 inputValid = true;
                 saveAcersBought(acreNum);
             }
-            }catch(NumberFormatException ex) {
+            } catch(NumberFormatException ex) {
                 System.out.println("Please enter a number.");
             }
         

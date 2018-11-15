@@ -54,11 +54,11 @@ public class PlantCropsView extends ViewBase {
                 cropNum = Integer.parseInt(inputs[0]);
             if (cropNum < 0) {
                 System.out.println("Please enter a positive number.");
-            }else {
+            } else {
                 inputValid = true;
                 saveCropsPlanted(cropNum);
             }
-             }catch(NumberFormatException ex) {
+            } catch(NumberFormatException ex) {
                 System.out.println("Please enter a number.");
             }
         

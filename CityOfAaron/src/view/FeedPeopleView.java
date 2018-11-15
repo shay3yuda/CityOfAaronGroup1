@@ -58,11 +58,11 @@ public class FeedPeopleView extends ViewBase {
                 bushelsNum = Integer.parseInt(inputs[0]);
             if (bushelsNum < 0) {
                 System.out.println("Please enter a positive number.");
-            }else {
+            } else {
                 inputValid = true;
                 saveBushelsFed(bushelsNum);
-             }
-             }catch(NumberFormatException ex) {
+            }
+            } catch(NumberFormatException ex) {
                 System.out.println("Please enter a number.");
             }
         

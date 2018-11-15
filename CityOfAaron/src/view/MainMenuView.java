@@ -1,19 +1,18 @@
-
 package view;
 
 /**
  *
- * 
+ *
  */
 public class MainMenuView extends ViewBase {
-    
+
     /**
      * Constructor
      */
-    public MainMenuView(){ 
+    public MainMenuView() {
         // empty constructor
     }
-    
+
     @Override
     protected String getMessage() {
         return "Main Menu\n"
@@ -26,42 +25,42 @@ public class MainMenuView extends ViewBase {
 
     /**
      * Get the set of inputs from the user.
-     * @return 
+     *
+     * @return
      */
     @Override
     public String[] getInputs() {
-        
+
         // Declare the array to have the number of elements you intend to get 
         // from the user.
         String[] inputs = new String[1];
-        
+
         inputs[0] = getUserInput("What would you like to do?");
-        
+
         // Repeat for each input you need, putting it into its proper slot in the array.
-        
         return inputs;
     }
-    
-    
+
     /**
      * Perform the action indicated by the user's input.
+     *
      * @param inputs
      * @return true if the view should repeat itself, and false if the view
      * should exit and return to the previous view.
      */
     @Override
-    public boolean doAction(String[] inputs){
+    public boolean doAction(String[] inputs) {
         // Act on the user's input.
         // This is a "dispatch" function that decides what
         // other functions to call. You can use an if-, if-else,
         // or switch statement.
-        
+
         // return false if you want this view to exit and return
         // to the view that called it.
-        switch(inputs[0].trim().toUpperCase()){
+        switch (inputs[0].trim().toUpperCase()) {
             case "N":
                 startNewGame();
-                break;   
+                break;
             case "L":
                 loadSavedGame();
                 break;
@@ -71,21 +70,21 @@ public class MainMenuView extends ViewBase {
             case "Q":
                 System.out.println("See you later!");
                 return false;
-        } 
-        
+        }
+
         return true;
     }
-    
+
     private void startNewGame() {
         NewGameView view = new NewGameView(); // TODO change NewGameView to View once NewGameView is refactored
         view.displayView();
     }
-    
+
     private void helpMenu() {
-        HelpMenuView helpMenu = new HelpMenuView(); // TODO change HelpMenuView to View once it is refactored
+        View helpMenu = new HelpMenuView();
         helpMenu.displayView();
     }
-    
+
     private void loadSavedGame() {
         LoadGameView loadGame = new LoadGameView(); // TODO change LoadGameView to View once it is refactored
         loadGame.displayView();

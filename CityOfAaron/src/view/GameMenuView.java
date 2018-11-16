@@ -128,11 +128,13 @@ public class GameMenuView extends ViewBase {
     }
 
     private void mapView() {
-        System.out.println("mapView() called. Implementation coming soon"); //TODO mapView stub function needs to be fully implemented
+        View mapView = new MapView();
+        mapView.displayView();
     }
 
     private void moveNewLocation() {
-        System.out.println("moveNewLocation() called. Implementation coming soon"); //TODO moveNewLocation stub function needs to be fully implemented
+        View newLocationView = new NewLocationView();
+        newLocationView.displayView();
     }
 
     private void manageCrops() {

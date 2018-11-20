@@ -47,27 +47,15 @@ public class PlantCropsView extends ViewBase {
     @Override
     public boolean doAction(String[] inputs){
         
-        int cropNum = 0;
-        boolean inputValid = false;
-
-            try {
-                cropNum = Integer.parseInt(inputs[0]);
-            if (cropNum < 0) {
-                System.out.println("Please enter a positive number.");
-            } else {
-                inputValid = true;
-                saveCropsPlanted(cropNum);
-            }
-            } catch(NumberFormatException ex) {
-                System.out.println("Please enter a number.");
-            }
+        int cropNum = stringToInt(inputs);
+        saveCropsPlanted(cropNum);
         
         return false;
     }
            
     private void saveCropsPlanted(int cropNum) {
         //stub function, to be completed after AnnualReport is implemented 
-        System.out.println("\nCrops to be planted saved\n"
+        System.out.println("\n" + cropNum + " acres will be planted\n"
                            + "Implentations coming soon\n"
                            + "*Returning To Manage Crop Menu\n");//TODO: call function to make sure the amount being planted is possible, update, and save.
     }       

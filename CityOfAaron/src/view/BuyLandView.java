@@ -51,27 +51,15 @@ public class BuyLandView extends ViewBase {
     @Override
     public boolean doAction(String[] inputs){
         
-        int acreNum = 0;
-        boolean inputValid = false;
-
-            try {
-                acreNum = Integer.parseInt(inputs[0]);
-            if (acreNum < 0) {
-                System.out.println("Please enter a positive number.");
-            } else {
-                inputValid = true;
-                saveAcersBought(acreNum);
-            }
-            } catch(NumberFormatException ex) {
-                System.out.println("Please enter a number.");
-            }
+        int acreNum = stringToInt(inputs);
+        saveAcersBought(acreNum);
         
         return false;
     }
            
     private void saveAcersBought(int acreNum) {
         //stub function, to be completed after AnnualReport is implemented 
-        System.out.println("\nLand purchased is saved\n"
+        System.out.println("\n" + acreNum + " acres of land purchased is being saved\n"
                            + "Implentations coming soon\n"
                            + "*Returning To Manage Crop Menu\n");//TODO: call function to make sure the amount being bought can be afford, update, and save.
     }       

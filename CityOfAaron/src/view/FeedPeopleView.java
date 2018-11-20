@@ -51,29 +51,17 @@ public class FeedPeopleView extends ViewBase {
     @Override
     public boolean doAction(String[] inputs){
         
-        int bushelsNum = 0;
-        boolean inputValid = false;
-
-            try {
-                bushelsNum = Integer.parseInt(inputs[0]);
-            if (bushelsNum < 0) {
-                System.out.println("Please enter a positive number.");
-            } else {
-                inputValid = true;
-                saveBushelsFed(bushelsNum);
-            }
-            } catch(NumberFormatException ex) {
-                System.out.println("Please enter a number.");
-            }
+        int bushelsNum = stringToInt(inputs);
+        saveBushelsFed(bushelsNum);
         
         return false;
     }
            
     private void saveBushelsFed(int bushelsNum) {
         //stub function, to be completed after AnnualReport is implemented 
-        System.out.println("\nYour People have been fed\n"
+        System.out.println("\nYour People have been fed " + bushelsNum + " bushels\n"
                            + "Implentations coming soon\n"
-                           + "*Returning To Manage Crop Menu\n");//TODO: call function to check and make sure the amount doesn't exceed the wheat in storage and then update and save.
+                           + "*Returning To Manage Crop Menu\n");//TODO call function to check and make sure the amount doesn't exceed the wheat in storage and then update and save.
     }       
 
 }

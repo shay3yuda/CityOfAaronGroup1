@@ -51,31 +51,21 @@ public class SellLandView extends ViewBase {
     @Override
     public boolean doAction(String[] inputs){
         
-        int acreNum = 0;
-        boolean inputValid = false;
-
-            try {
-                acreNum = Integer.parseInt(inputs[0]);
-            if (acreNum < 0) {
-                System.out.println("Please enter a positive number.");
-            } else {
-                inputValid = true;
-                saveAcersSold(acreNum);
-            }
-            } catch(NumberFormatException ex) {
-                System.out.println("Please enter a number.");
-            }
-            
-        return false;
-    }
+        int num = stringToInt(inputs);
+        saveAcersSold(num);
            
-    private void saveAcersSold(int acreNum) {
+        return false;
+   }
+          
+    
+    private void saveAcersSold(int num) {
         //stub function, to be completed after AnnualReport is implemented 
-        System.out.println("\nLand sold is saved\n"
+        System.out.println("\n" + num + " acres of land sold is being saved\n"
                            + "Implentations coming soon\n"
-                           + "*Returning To Manage Crop Menu\n");//TODO: call function to save and update land owned.
+                           + "*Returning To Manage Crop Menu\n");//TODO call function to save and update land owned.
     } 
     
+
 }    
     
 //    private void stringToInt (int )

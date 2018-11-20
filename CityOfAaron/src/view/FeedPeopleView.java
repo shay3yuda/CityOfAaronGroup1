@@ -41,7 +41,6 @@ public class FeedPeopleView extends ViewBase {
         return inputs;
     }
     
-    
     /**
      * Perform the action indicated by the user's input.
      * @param inputs

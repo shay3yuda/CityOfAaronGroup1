@@ -68,6 +68,3 @@ public class SellLandView extends ViewBase {
 
 }    
     
-//    private void stringToInt (int )
-//
-//    }

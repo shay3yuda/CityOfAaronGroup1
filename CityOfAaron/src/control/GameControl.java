@@ -69,19 +69,19 @@ public class GameControl {
         return name;
     }
 
-    public static boolean gameShouldEnd(int mortalityRate, int yearNumber) {
-        //stub function that will be implemented fully later
+    public static boolean gameShouldEnd(int mortalityRate) {
+        //TODO stub function, to fully implement change mortality rate to > 50%, not zero
         if (mortalityRate > 0) {
-            System.out.println("More than 50% of your population died, therefore this game is over. Repent and try again.");
             return true;
-        } else if (yearNumber > 10) {
-            //TODO create end of game report showing total game statistics. Use Annual Report format but bring in stats from every year.
-            System.out.println("Ten glorious years have passed, therefore this game is over. Congratulations!");
-            return true;
-        } else {
-            return false;
         }
+        return false;
+    }
 
+    public static boolean gameMatures(int yearNumber) {
+        if (yearNumber > 10) {
+            return true;
+        }
+        return false;
     }
 
     public static void saveGameToFile(Game game, String filename) {

@@ -1,7 +1,6 @@
 package view;
 
 import control.GameControl;
-import view.MainMenuView;
 
 /**
  *
@@ -98,15 +97,23 @@ public class GameMenuView extends ViewBase {
      * Control this view's display/prompt/action loop until the user chooses and
      * action that causes this view to close.
      */
-    @Override //using this override to place getAnnualReport inside displayView while loop. Remove this entire block if move annual report to getMessage()
+    @Override //using this override to place getAnnualReport and gameShouldEnd inside displayView while loop.
     public void displayView() {
 
         boolean keepGoing = true;
 
         while (keepGoing == true) {
+            //display the annual report above the GameMenuView
             getAnnualReport();
-
-            if (GameControl.gameShouldEnd(0, 1)) { //TODO when fully implemented, this will contain mortality rate and currentYear from annual report 
+            //check to see if the game should end and if so, display a message and return to Main Menu 
+            if (GameControl.gameShouldEnd(0)) {
+                //TODO when fully implemented, this will contain mortality rate variable from annual report 
+                System.out.println("More than 50% of your population died, therefore this game is over. Repent and try again.");
+                return;
+            } else if (GameControl.gameMatures(1)) {
+                //TODO when fully implemented, this will contain currentYear variable from annual report.
+                //TODO create end of game report showing total game statistics. Use Annual Report format but bring in stats from every year.
+                System.out.println("Ten glorious years have passed, therefore this game is over. Congratulations on a successful game!");
                 return;
             }
             // get message that should be displayed
@@ -121,15 +128,17 @@ public class GameMenuView extends ViewBase {
     }
 
     private void mapView() {
-        System.out.println("mapView() called. Implementation coming soon"); //TODO mapView stub function needs to be fully implemented
+        View mapView = new MapView();
+        mapView.displayView();
     }
 
     private void moveNewLocation() {
-        System.out.println("moveNewLocation() called. Implementation coming soon"); //TODO moveNewLocation stub function needs to be fully implemented
+        View newLocationView = new NewLocationView();
+        newLocationView.displayView();
     }
 
     private void manageCrops() {
-        ManageCropMenuView manageCropsMenu = new ManageCropMenuView();
+        View manageCropsMenu = new ManageCropMenuView();
         manageCropsMenu.displayView();
     }
 
@@ -138,12 +147,12 @@ public class GameMenuView extends ViewBase {
     }
 
     private void reportsMenu() {
-        ReportsMenuView reportsMenu = new ReportsMenuView();
+        ReportsMenuView reportsMenu = new ReportsMenuView(); // TODO change ReportsMenuView to View once it is refactored
         reportsMenu.displayView();
     }
 
     private void saveGame() {
-        SaveGameView saveGame = new SaveGameView();
+        SaveGameView saveGame = new SaveGameView(); // TODO change SaveGameView to View once it is refactored
         saveGame.displayView();
     }
 
@@ -176,4 +185,5 @@ public class GameMenuView extends ViewBase {
         //+ "The number of bushels of wheat eaten by rats is " + lossToRats + ".\n"
         //+ "The number of bushels of wheat in store is " + totalWheat + ".\";
     }
+
 }

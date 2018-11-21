@@ -11,19 +11,10 @@ import java.io.Serializable;
  * @author Brenda
  */
 public class Provision extends InventoryItem implements Serializable{
-    private String name;
     private Boolean perishable;
     
     public Provision() {
         //empty default constructor for JavaBeans
-    }
-    
-    public String getName() {
-        return name;
-    }
-    
-    public void setName(String name) {
-        this.name = name;
     }
     
     public Boolean getPerishable() {
@@ -36,8 +27,8 @@ public class Provision extends InventoryItem implements Serializable{
 
     @Override
     public String toString() {
-        return String.format("Provision {%s, name=%s, perishable=%s}", 
-                super.toString(), name, perishable);
+        return String.format("Provision {%s, perishable=%s}", 
+                super.toString(), perishable);
     }
     
 }

@@ -1,7 +1,7 @@
 package control;
 
 import model.Map;
-import model.Point;
+ import model.Point;
 import model.Location;
 
 /**

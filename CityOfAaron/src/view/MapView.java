@@ -17,16 +17,8 @@ public class MapView extends ViewBase {
     
     @Override
     protected String getMessage() {
-        //Map map = MapControl.createMap();
-        // TODO displaying set map for now, in the future it will be called dynamically from createMap()
-//        displayMap();
-//        return "As the ruler of the City of Aaron,\n"
-//                + "you have access to the city map and its secrets\n"
-//                + "-----------------------------------------------------\n";
-//                 
+           
           return null;      
-
-
     }
     
     /**
@@ -49,31 +41,40 @@ public class MapView extends ViewBase {
      */
     @Override
     public boolean doAction(String[] inputs) {
-        // Act on the user's input.
-        // This is a "dispatch" function that decides what
-        // other functions to call. You can use an if-, if-else,
-        // or switch statement.
-        
+       
         // return false if you want this view to exit and return
         // to the view that called it.
 
-        //pause(1500);
         displayMap();
         return false;
     }
     
     public void displayMap() {
+        System.out.println("As the ruler of the City of Aaron,");
+        System.out.println("you have access to the city map and its secrets.");
+        System.out.println("------------------------------");
+        
         Map map = MapControl.createMap();    
         Location[][] locations = map.getLocations();
-        //locations[][] = map.locations;
+
         for (int i = 0; i < locations.length; i++) {
 
             for (int j = 0; j < locations[i].length; j++) {
-                //System.out.println(map.getLocations[i][j].getMapSymbol());
-                System.out.printf("%2s", j);
+                System.out.printf("%3s", map.getLocations()[i][j].getMapSymbol());
             }
             System.out.println();
         }
+        System.out.println("------------------------------");
+        System.out.println("C - Ruler's Court");
+        System.out.println("S - City Granary and Storehouse");
+        System.out.println("F - Wheat field");
+        System.out.println("U - Undeveloped land");
+        System.out.println("V - Village");
+        System.out.println("R - River"); 
+        System.out.println("B - Border of the Lamanite lands");
+        System.out.println("T - Temple");
+        System.out.println("W - Watchtower\n"); 
+        pause(1500);
     }
 
 }

@@ -1,6 +1,10 @@
 package view;
 
 import java.util.Scanner;
+import model.Storehouse;
+import model.Author;
+import cityofaaron.CityOfAaron;
+import model.Game;
 
 
 /**
@@ -96,9 +100,22 @@ public class ReportsMenuView extends ViewBase {
         saveReport();
     }
     
-    private void authorsOfGame() {
-        System.out.println("authorsOfGame() called, implementation coming soon!\n");
+    private Author authorsOfGame() {        
+        
+        System.out.println("The authors of this game are:");
+        
+        Game game = CityOfAaron.getCurrentGame();
+        Storehouse storehouse = game.getTheStorehouse();
+        Author[] authors = storehouse.getAuthors();
+
+        for (int i = 0; i < authors.length; i++) {
+            
+            System.out.println(authors[i].getName());           
+
+        }   
+        System.out.println();
         saveReport();
+        return null;
     }
     
     private void saveReport() {

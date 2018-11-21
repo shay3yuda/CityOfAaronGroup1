@@ -1,9 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package view;
+
+import control.MapControl;
+import model.Map;
+import model.Location;
 
 /**
  *
@@ -17,26 +17,16 @@ public class MapView extends ViewBase {
     
     @Override
     protected String getMessage() {
-        
+        //Map map = MapControl.createMap();
         // TODO displaying set map for now, in the future it will be called dynamically from createMap()
-        return "As the ruler of the City of Aaron,\n"
-                + "you have access to the city map and its secrets\n"
-                + "-----------------------------------------------------\n"
-                + "[W] [F] [R] [F] [U] [W]\n"
-                + "[B] [V] [R] [F] [V] [F]\n"
-                + "[B] [V] [R] [T] [F] [V]\n"
-                + "[B] [F] [S] [R] [V] [F]\n"
-                + "[B] [R] [F] [F] [R] [U]\n"
-                + "[W] [R] [U] [V] [R] [W]\n"
-                + "C - Rulers Court\n"
-                + "S - City's Granary and Storehouse\n"
-                + "F - Wheat Fields\n"
-                + "U - Undeveloped Land\n"
-                + "V - the Village\n"
-                + "R - the River\n"
-                + "B - Border of the Lamanites land\n"
-                + "T - the Temple\n"
-                + "W - Watchtower\n";
+//        displayMap();
+//        return "As the ruler of the City of Aaron,\n"
+//                + "you have access to the city map and its secrets\n"
+//                + "-----------------------------------------------------\n";
+//                 
+          return null;      
+
+
     }
     
     /**
@@ -66,8 +56,24 @@ public class MapView extends ViewBase {
         
         // return false if you want this view to exit and return
         // to the view that called it.
-        pause(1500);
-        
+
+        //pause(1500);
+        displayMap();
         return false;
     }
+    
+    public void displayMap() {
+        Map map = MapControl.createMap();    
+        Location[][] locations = map.getLocations();
+        //locations[][] = map.locations;
+        for (int i = 0; i < locations.length; i++) {
+
+            for (int j = 0; j < locations[i].length; j++) {
+                //System.out.println(map.getLocations[i][j].getMapSymbol());
+                System.out.printf("%2s", j);
+            }
+            System.out.println();
+        }
+    }
+
 }

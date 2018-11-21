@@ -18,6 +18,11 @@ public class Author implements Serializable {
         //empty constructor for JavaBeans
     }
     
+    public Author(String name, String title) {
+        setName(name);
+        setTitle(title);
+    }
+    
     public String getName() {
         return name;
     }

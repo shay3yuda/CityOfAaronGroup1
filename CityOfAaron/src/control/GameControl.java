@@ -5,8 +5,13 @@
  */
 package control;
 
+import cityofaaron.CityOfAaron;
 import java.util.Random;
 import model.Game;
+import model.Player;
+import model.Map;
+import model.Storehouse;
+import model.Author;
 
 /**
  *
@@ -92,7 +97,60 @@ public class GameControl {
 
     }
 
-//    public static String createNewGame(String playerName) {
-//        
-//    }
+    public static Game createNewGame(String playerName) {
+                             
+        Player player = new Player();
+        player.setName(playerName);
+               
+        Game game = new Game();
+        game.setThePlayer(player);
+
+        game.setCurrentPopulation(100);
+        game.setAcresOwned(1000);
+        game.setWheatInStorage(2700);
+                      
+        Map theMap = MapControl.createMap();
+        game.setTheMap(theMap);
+        
+        Storehouse storehouse = new Storehouse();
+        Author[] author = { 
+            new Author("Brenda", "Programmer"),
+            new Author("Shay", "Programmer"),
+            new Author("Esther", "Programmer")        
+        };
+        
+        storehouse.setAuthors(author);
+        game.setTheStorehouse(storehouse);
+        
+ 
+        return game;
+        
+        
+//        public void InventoryItem[] createItems() {
+//        //public  createItems(ItemType item, int quantity, Condition condition) {
+//            //TODO stub function to be implemented later
+//            System.out.println("createItems method called. When fully implemented, this will return an array of all the Inventory items.");    
+//
+////            InventoryItem.setItemType(item);
+////            InventoryItem.setQuantity(quantity);
+////            InventoryItem.setCondition(condition);
+//            
+//        }
+        
+        
+        
+
+        
+        // Create the lists of used in the game
+//        items = createItems()
+//        call setter to save items list in the game object
+//        // Create all other list (e.g., questions, weapons, spells) and save in the game
+//        …
+//        map = createMap(game, noOfRows, noOfColumns)
+//        if map == null
+//        return -2 // indicates create map failed
+//        endif
+//        call setter to save the map in the game object
+//        RETURN 1 // indicates success
+    }
 }

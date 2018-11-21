@@ -4,6 +4,7 @@ package view;
 import model.Player;
 import model.Game;
 import cityofaaron.CityOfAaron;
+import control.GameControl;
 
 /**
  *
@@ -67,14 +68,8 @@ public class NewGameView extends ViewBase {
     private void createAndStartGame(String playerName) {
         
         //Eventually, we will do this:
-        //Game game = GameControl.createNewGame(playerName):
-        
-        Player player = new Player();
-        player.setName(playerName);
-        
-        Game game = new Game();
-        game.setThePlayer(player);
-        
+        Game game = GameControl.createNewGame(playerName);        
+      
         CityOfAaron.setCurrentGame(game);
         
         System.out.println();

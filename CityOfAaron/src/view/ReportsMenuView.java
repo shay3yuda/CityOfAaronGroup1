@@ -5,7 +5,7 @@ import model.Storehouse;
 import model.Author;
 import cityofaaron.CityOfAaron;
 import model.Game;
-
+import model.InventoryItem;
 
 /**
  *
@@ -19,7 +19,7 @@ public class ReportsMenuView extends ViewBase {
     public ReportsMenuView() {
         // empty constructor
     }
-    
+
     @Override
     protected String getMessage() {
         return "Reports Menu\n"
@@ -28,46 +28,47 @@ public class ReportsMenuView extends ViewBase {
                 + "T - View the tools in the storehouse\n"
                 + "P - View the provisions in the storehouse\n"
                 + "G - View the authors of this game\n"
-                + "Q - Return to Game Menu\n";         
+                + "Q - Return to Game Menu\n";
     }
-    
+
     /**
      * Get the set of inputs from the user.
-     * @return 
+     *
+     * @return
      */
     @Override
     public String[] getInputs() {
-        
+
         // Declare the array to have the number of elements you intend to get 
         // from the user.
         String[] inputs = new String[1];
-        
+
         inputs[0] = getUserInput("Which report would you like to view?");
-        
+
         // Repeat for each input you need, putting it into its proper slot in the array.
-        
         return inputs;
     }
 
     /**
      * Perform the action indicated by the user's input.
+     *
      * @param inputs
      * @return true if the view should repeat itself, and false if the view
      * should exit and return to the previous view.
      */
     @Override
-    public boolean doAction(String[] inputs){
+    public boolean doAction(String[] inputs) {
         // Act on the user's input.
         // This is a "dispatch" function that decides what
         // other functions to call. You can use an if-, if-else,
         // or switch statement.
-        
+
         // return false if you want this view to exit and return
         // to the view that called it.
-        switch(inputs[0].trim().toUpperCase()) {
+        switch (inputs[0].trim().toUpperCase()) {
             case "A":
                 animalsInStorehouse();
-                break;   
+                break;
             case "T":
                 toolsInStorehouse();
                 break;
@@ -80,61 +81,85 @@ public class ReportsMenuView extends ViewBase {
             case "Q":
                 System.out.println("Returning to Game Menu\n");
                 return false;
-        } 
-        
+        }
+
         return true;
     }
-  
+
     private void animalsInStorehouse() {
         System.out.println("animalsInStorehouse() called, implementation coming soon!\n");
         saveReport();
     }
-    
+
     private void toolsInStorehouse() {
-        System.out.println("toolsInStorehouse() called, implementation coming soon!\n");
+        System.out.println("The tools of this game are:");
+
+        
+        Game game = CityOfAaron.getCurrentGame();
+        Storehouse storehouse = game.getTheStorehouse();
+        InventoryItem[] tools = storehouse.getTools();
+        
+        if (tools == null) {
+            System.out.println("There are no tools in the Storehouse.");
+        } else {
+            String toolName;
+            int toolCount;
+            for (int i = 0; i < tools.length; i++) {
+                toolName = tools[i].getName();
+                toolCount = tools[i].getQuantity();
+                System.out.println(toolCount + " " + toolName);
+            }
+            long total = 0;
+            for (int i = 0; i < tools.length; i++) {
+                toolCount = tools[i].getQuantity();
+                total += toolCount;
+            }
+            System.out.println("There is a total of " + total + " tools in the Storehouse.");
+        }
+        
         saveReport();
+        //return null;
     }
-    
+
     private void provisionsInStorehouse() {
         System.out.println("provisionsInStorehouse() called, implementation coming soon!\n");
         saveReport();
     }
-    
-    private Author authorsOfGame() {        
-        
+
+    private Author authorsOfGame() {
+
         System.out.println("The authors of this game are:");
-        
+
         Game game = CityOfAaron.getCurrentGame();
         Storehouse storehouse = game.getTheStorehouse();
         Author[] authors = storehouse.getAuthors();
 
         for (int i = 0; i < authors.length; i++) {
-            
-            System.out.println(authors[i].getName());           
 
-        }   
+            System.out.println(authors[i].getName());
+
+        }
         System.out.println();
         saveReport();
         return null;
     }
-    
+
     private void saveReport() {
-      
+
         String[] inputs = new String[1];
-        
+
         inputs[0] = getUserInput("Do you want to save report to file?\n"
                 + "Y - Yes\n"
                 + "N - No\n");
-        
-        switch(inputs[0].trim().toUpperCase()) {
+
+        switch (inputs[0].trim().toUpperCase()) {
             case "Y":
                 System.out.println("GameControl.saveReportToFile() called, implementation coming soon.\n");
-                break;   
+                break;
             case "N":
                 displayView();
                 break;
 
-        }    
+        }
     }
 }
-

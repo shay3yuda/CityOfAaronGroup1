@@ -12,6 +12,9 @@ import model.Player;
 import model.Map;
 import model.Storehouse;
 import model.Author;
+import model.Condition;
+import model.InventoryItem;
+import model.ItemType;
 
 /**
  *
@@ -117,40 +120,16 @@ public class GameControl {
             new Author("Brenda", "Programmer"),
             new Author("Shay", "Programmer"),
             new Author("Esther", "Programmer")        
-        };
-        
+        };        
         storehouse.setAuthors(author);
-        game.setTheStorehouse(storehouse);
         
+        //call createTools() to create a tools array and set it in the storehouse
+        InventoryItem[] tools = StorehouseControl.createTools();
+        storehouse.setTools(tools);
+        
+        game.setTheStorehouse(storehouse);       
  
-        return game;
-        
-        
-//        public void InventoryItem[] createItems() {
-//        //public  createItems(ItemType item, int quantity, Condition condition) {
-//            //TODO stub function to be implemented later
-//            System.out.println("createItems method called. When fully implemented, this will return an array of all the Inventory items.");    
-//
-////            InventoryItem.setItemType(item);
-////            InventoryItem.setQuantity(quantity);
-////            InventoryItem.setCondition(condition);
-//            
-//        }
-        
-        
-        
+        return game;      
 
-        
-        // Create the lists of used in the game
-//        items = createItems()
-//        call setter to save items list in the game object
-//        // Create all other list (e.g., questions, weapons, spells) and save in the game
-//        …
-//        map = createMap(game, noOfRows, noOfColumns)
-//        if map == null
-//        return -2 // indicates create map failed
-//        endif
-//        call setter to save the map in the game object
-//        RETURN 1 // indicates success
     }
 }

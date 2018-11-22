@@ -110,8 +110,9 @@ public class ReportsMenuView extends ViewBase {
                 System.out.println(toolCount + " " + toolName);
             }
             long total = 0;
-            for (int i = 0; i < tools.length; i++) {
-                toolCount = tools[i].getQuantity();
+            for (InventoryItem tool : tools) {
+                //put tool quantity into variable toolCount so can += with long total. 
+                toolCount = tool.getQuantity(); 
                 total += toolCount;
             }
             System.out.println("There is a total of " + total + " tools in the Storehouse.");

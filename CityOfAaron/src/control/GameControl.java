@@ -14,7 +14,7 @@ import model.Storehouse;
 import model.Author;
 import model.Condition;
 import model.InventoryItem;
-import model.ItemType;
+import model.Animal;
 
 /**
  *
@@ -126,6 +126,9 @@ public class GameControl {
         //call createTools() to create a tools array and set it in the storehouse
         InventoryItem[] tools = StorehouseControl.createTools();
         storehouse.setTools(tools);
+        
+        Animal[] animals = StorehouseControl.createAnimals();
+        storehouse.setAnimals(animals);
         
         game.setTheStorehouse(storehouse);       
  

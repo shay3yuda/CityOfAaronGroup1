@@ -6,7 +6,8 @@ import model.ItemType;
 import model.Condition;
 import model.Storehouse;
 import cityofaaron.CityOfAaron;
-import model.Game;
+import model.Author;
+import model.Animal;
 /**
  *
  * @author Brenda
@@ -29,6 +30,18 @@ public class StorehouseControl {
         return tools;
     }
     
-    
+    public static Animal[] createAnimals() {
+
+        
+        Animal[] animals = new Animal[5];
+        
+        animals[0] = new Animal(ItemType.ANIMAL, 50, Condition.GOOD, "Horses", 5);
+        animals[1] = new Animal(ItemType.ANIMAL, 100, Condition.GOOD, "Dogs", 3);
+        animals[2] = new Animal(ItemType.ANIMAL, 150, Condition.GOOD, "Cats", 4);
+        animals[3] = new Animal(ItemType.ANIMAL, 85, Condition.GOOD, "llamas", 2);
+        animals[4] = new Animal(ItemType.ANIMAL, 1, Condition.FAIR, "Unicorn", 3000); 
+        
+        return animals;
+    }
     
 }

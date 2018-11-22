@@ -12,7 +12,7 @@ import model.Player;
 import model.Map;
 import model.Storehouse;
 import model.Author;
-import model.Condition;
+import model.Provision;
 import model.InventoryItem;
 import model.Animal;
 
@@ -129,6 +129,9 @@ public class GameControl {
         
         Animal[] animals = StorehouseControl.createAnimals();
         storehouse.setAnimals(animals);
+        
+        Provision[] provision = StorehouseControl.createProvisions();
+        storehouse.setProvisions(provision);
         
         game.setTheStorehouse(storehouse);       
  

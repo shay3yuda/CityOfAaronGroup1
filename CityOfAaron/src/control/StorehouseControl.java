@@ -8,6 +8,8 @@ import model.Storehouse;
 import cityofaaron.CityOfAaron;
 import model.Author;
 import model.Animal;
+import model.Provision;
+
 /**
  *
  * @author Brenda
@@ -44,4 +46,16 @@ public class StorehouseControl {
         return animals;
     }
     
+    public static Provision[] createProvisions() {
+       
+        Provision[] provisions = new Provision[6];
+        provisions[0] = new Provision(ItemType.PROVISIONS, 9, Condition.GOOD, "Food", true);
+        provisions[1] = new Provision(ItemType.PROVISIONS, 1, Condition.FAIR, "Water Bottle", false);
+        provisions[2] = new Provision(ItemType.PROVISIONS, 3, Condition.FAIR, "Blanket", false);
+        provisions[3] = new Provision(ItemType.PROVISIONS, 8, Condition.POOR, "Clothing", false);
+        provisions[4] = new Provision(ItemType.PROVISIONS, 4, Condition.GOOD, "Tent", false);
+        provisions[5] = new Provision(ItemType.PROVISIONS, 5, Condition.GOOD, "Soap", false);
+        
+        return provisions;
+    }
 }

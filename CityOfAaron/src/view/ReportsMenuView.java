@@ -1,11 +1,11 @@
 package view;
 
-import java.util.Scanner;
 import model.Storehouse;
 import model.Author;
 import cityofaaron.CityOfAaron;
 import model.Game;
 import model.InventoryItem;
+import model.Provision;
 
 /**
  *
@@ -94,11 +94,10 @@ public class ReportsMenuView extends ViewBase {
     private void toolsInStorehouse() {
         System.out.println("The tools of this game are:");
 
-        
         Game game = CityOfAaron.getCurrentGame();
         Storehouse storehouse = game.getTheStorehouse();
         InventoryItem[] tools = storehouse.getTools();
-        
+
         if (tools == null) {
             System.out.println("There are no tools in the Storehouse.");
         } else {
@@ -116,13 +115,35 @@ public class ReportsMenuView extends ViewBase {
             }
             System.out.println("There is a total of " + total + " tools in the Storehouse.");
         }
-        
+
         saveReport();
         //return null;
     }
 
     private void provisionsInStorehouse() {
-        System.out.println("provisionsInStorehouse() called, implementation coming soon!\n");
+
+        System.out.println("The provisions you have are:");
+        
+        Provision[] provisions = CityOfAaron.getCurrentGame().getTheStorehouse().getProvisions();
+        
+        int provisionCount;
+        String provisionName;
+        for (Provision provision : provisions) {
+            provisionCount = provision.getQuantity();
+            provisionName = provision.getName();
+            System.out.println(provisionName + ", " + provisionCount);
+        }
+        
+        int minValue = provisions[0].getQuantity();
+        String name;
+        for (int i=0; i < provisions.length; i++) {
+            if (provisions[i].getQuantity() < minValue) {
+                minValue = provisions[i].getQuantity();
+                name = provisions[i].getName();
+                System.out.println("You only have " + minValue + " left of " + name + ". You should search for more.\n");
+            }
+        }
+
         saveReport();
     }
 

@@ -12,7 +12,7 @@ import model.Player;
 import model.Map;
 import model.Storehouse;
 import model.Author;
-import model.Condition;
+import model.Provision;
 import model.InventoryItem;
 import model.ItemType;
 
@@ -126,6 +126,9 @@ public class GameControl {
         //call createTools() to create a tools array and set it in the storehouse
         InventoryItem[] tools = StorehouseControl.createTools();
         storehouse.setTools(tools);
+        
+        Provision[] provision = StorehouseControl.createProvisions();
+        storehouse.setProvisions(provision);
         
         game.setTheStorehouse(storehouse);       
  

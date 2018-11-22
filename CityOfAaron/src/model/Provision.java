@@ -17,6 +17,14 @@ public class Provision extends InventoryItem implements Serializable{
         //empty default constructor for JavaBeans
     }
     
+    public Provision(ItemType itemType, int quantity, Condition condition, String name, boolean perishable) {
+        setItemType(itemType);
+        setQuantity(quantity);
+        setCondition(condition);
+        setName(name);
+        setPerishable(perishable);
+    }
+    
     public Boolean getPerishable() {
         return perishable;
     }

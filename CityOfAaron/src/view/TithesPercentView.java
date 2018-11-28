@@ -1,5 +1,8 @@
 package view;
 
+import control.WheatControl;
+import exceptions.WheatControlException;
+
 /**
  *
  * @author bwicker
@@ -51,21 +54,18 @@ public class TithesPercentView extends ViewBase {
 
         // return false if you want this view to exit and return
         // to the view that called it.
-        int int1 = 0;
+        int tithes = 0;
         boolean inputValid = false;
 
         try {
-            int1 = Integer.parseInt(inputs[0]);
-            if (int1 < 0) {
-                System.out.println("Please enter a positive number.");
-            } else if (int1 > 100) {
-                System.out.println("Please enter a number that is not greater than 100.");
-            } else {
+            tithes = Integer.parseInt(inputs[0]);
+            WheatControl.checkTithing(tithes);
                 inputValid = true;
-                saveTithing(int1);
-            }
+                saveTithing(tithes);
         } catch (NumberFormatException ex) {
             System.out.println("Please enter a number.");
+        } catch (WheatControlException wce) {
+            System.out.println(wce.getMessage());
         }
 
         return !inputValid;

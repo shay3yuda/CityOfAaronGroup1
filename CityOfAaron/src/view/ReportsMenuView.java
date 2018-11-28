@@ -130,25 +130,7 @@ public class ReportsMenuView extends ViewBase {
 
         System.out.println("The provisions you have are:");
         
-        Provision[] provisions = CityOfAaron.getCurrentGame().getTheStorehouse().getProvisions();
-        
-        int provisionCount;
-        String provisionName;
-        for (Provision provision : provisions) {
-            provisionCount = provision.getQuantity();
-            provisionName = provision.getName();
-            System.out.println(provisionName + ", " + provisionCount);
-        }
-        
-        int minValue = provisions[0].getQuantity();
-        String name;
-        for (int i=0; i < provisions.length; i++) {
-            if (provisions[i].getQuantity() < minValue) {
-                minValue = provisions[i].getQuantity();
-                name = provisions[i].getName();
-                System.out.println("You only have " + minValue + " left of " + name + ". You should search for more.\n");
-            }
-        }
+        StorehouseControl.provisionList();
 
         saveReport();
     }

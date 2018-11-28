@@ -93,7 +93,7 @@ public class ReportsMenuView extends ViewBase {
         System.out.println("The Animlas in this game are:");
 
         StorehouseControl.animalList();
-        
+
         saveReport();
     }
 
@@ -110,6 +110,16 @@ public class ReportsMenuView extends ViewBase {
     private void provisionsInStorehouse() {
 
         System.out.println("The provisions you have are:");
+
+        Provision[] provisions = CityOfAaron.getCurrentGame().getTheStorehouse().getProvisions();
+
+        int provisionCount;
+        String provisionName;
+        for (Provision provision : provisions) {
+            provisionCount = provision.getQuantity();
+            provisionName = provision.getName();
+            System.out.println(provisionName + ", " + provisionCount);
+        }
         
         StorehouseControl.provisionList();
 

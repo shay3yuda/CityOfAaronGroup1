@@ -95,14 +95,6 @@ public class StorehouseControl {
 
         Provision[] provisions = CityOfAaron.getCurrentGame().getTheStorehouse().getProvisions();
 
-        int provisionCount;
-        String provisionName;
-        for (Provision provision : provisions) {
-            provisionCount = provision.getQuantity();
-            provisionName = provision.getName();
-            System.out.println(provisionName + ", " + provisionCount);
-        }
-
         int minValue = provisions[0].getQuantity();
         String name = "";
         for (int i = 0; i < provisions.length; i++) {

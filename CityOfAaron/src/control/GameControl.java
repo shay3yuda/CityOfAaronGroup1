@@ -78,18 +78,13 @@ public class GameControl {
         return name;
     }
 
-    public static boolean gameShouldEnd(int mortalityRate) {
-        //TODO stub function, to fully implement change mortality rate to > 50%, not zero
+    public static boolean gameShouldEnd(int mortalityRate, int yearNumber) throws GameControlException{
+        //TODO stub function, to fully implement change mortality rate to > 50%, not zero. Do this after AnnualReport is fully implemented.
         if (mortalityRate > 0) {
-            // throw new GameControlException("More than 50% of your population died, therefore this game is over. Repent and try again."); 
-            return true;
-        }
-        return false;
-    }
-
-    public static boolean gameMatures(int yearNumber) {
-        if (yearNumber > 10) {
-            return true;
+            throw new GameControlException("More than 50% of your population died, therefore this game is over. Repent and try again."); 
+            //return true;
+        } else if (yearNumber > 10) {
+            throw new GameControlException("Ten glorious years have passed, therefore this game is over. Congratulations on a successful game!");
         }
         return false;
     }

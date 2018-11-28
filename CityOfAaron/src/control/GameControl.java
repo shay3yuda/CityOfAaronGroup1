@@ -15,6 +15,7 @@ import model.Author;
 import model.Provision;
 import model.InventoryItem;
 import model.Animal;
+import exceptions.GameControlException;
 
 /**
  *
@@ -46,20 +47,20 @@ public class GameControl {
      * @param max
      * @return The random number
      */
-    public static int getRandomNumber(int min, int max) {
-        //if min < 0 or max < 0 then return -1
+    public static int getRandomNumber(int min, int max) throws GameControlException {
+        //if min < 0 or max < 0 then return message
         if (min < 0 || max < 0) {
-            return -1;
+            throw new GameControlException("The number must be greater than zero.");
         }
 
         //if max <= min then return -2
         if (max <= min) {
-            return -2;
+            throw new GameControlException("The max number must be greater than the min number.");
         }
 
         //if max is the maximum value for integers, then return -3
         if (max == Integer.MAX_VALUE) {
-            return -3;
+            throw new GameControlException("The max number cannot be the maximum value for integers.");
         }
 
         //calculate the size of the range; add one so Random() includes high value
@@ -80,6 +81,7 @@ public class GameControl {
     public static boolean gameShouldEnd(int mortalityRate) {
         //TODO stub function, to fully implement change mortality rate to > 50%, not zero
         if (mortalityRate > 0) {
+            // throw new GameControlException("More than 50% of your population died, therefore this game is over. Repent and try again."); 
             return true;
         }
         return false;
@@ -92,50 +94,57 @@ public class GameControl {
         return false;
     }
 
-    public static void saveGameToFile(Game game, String filename) {
+    public static void saveGameToFile(Game game, String filename) throws GameControlException {
         //stub function that will be implamented later
     }
 
     public static void saveReportToFile(String[] filename) {
-
+        System.out.println("Report is saved");
     }
 
     public static Game createNewGame(String playerName) {
-                             
+
         Player player = new Player();
         player.setName(playerName);
-               
+
         Game game = new Game();
         game.setThePlayer(player);
 
         game.setCurrentPopulation(100);
         game.setAcresOwned(1000);
         game.setWheatInStorage(2700);
-                      
+
         Map theMap = MapControl.createMap();
         game.setTheMap(theMap);
-        
+
         Storehouse storehouse = new Storehouse();
-        Author[] author = { 
+        Author[] author = {
             new Author("Brenda", "Programmer"),
             new Author("Shay", "Programmer"),
-            new Author("Esther", "Programmer")        
-        };        
+            new Author("Esther", "Programmer")
+        };
         storehouse.setAuthors(author);
-        
+
         //call createTools() to create a tools array and set it in the storehouse
         InventoryItem[] tools = StorehouseControl.createTools();
         storehouse.setTools(tools);
-        
+
         Animal[] animals = StorehouseControl.createAnimals();
         storehouse.setAnimals(animals);
-        
+
         Provision[] provision = StorehouseControl.createProvisions();
         storehouse.setProvisions(provision);
-        
-        game.setTheStorehouse(storehouse);       
- 
-        return game;      
 
+        game.setTheStorehouse(storehouse);
+
+        return game;
+
+    }
+
+    public static void testInput(String[] inputs) throws GameControlException {
+
+        if (inputs[0] == null || inputs[0].equals("")) {
+            throw new GameControlException("No player name entered; returning to the Main Menu.");
+        }
     }
 }

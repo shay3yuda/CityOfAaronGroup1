@@ -106,10 +106,11 @@ public class GameMenuView extends ViewBase {
             //display the annual report above the GameMenuView
             getAnnualReport();
             //check to see if the game should end and if so, display a message and return to Main Menu 
+//TODO Implement try catch.
             if (GameControl.gameShouldEnd(0)) {
                 //TODO when fully implemented, this will contain mortality rate variable from annual report 
-                System.out.println("More than 50% of your population died, therefore this game is over. Repent and try again.");
-                return;
+               System.out.println("More than 50% of your population died, therefore this game is over. Repent and try again.");
+               return;
             } else if (GameControl.gameMatures(1)) {
                 //TODO when fully implemented, this will contain currentYear variable from annual report.
                 //TODO create end of game report showing total game statistics. Use Annual Report format but bring in stats from every year.

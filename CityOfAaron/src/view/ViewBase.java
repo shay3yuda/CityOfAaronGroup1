@@ -1,6 +1,8 @@
 package view;
 
 import java.util.Scanner;
+import control.WheatControl;
+import exceptions.WheatControlException;
 
 /**
  *
@@ -114,24 +116,23 @@ public abstract class ViewBase implements View {
             // do nothing
         }
     }
-    
-    protected static int stringToInt (String[] inputs) {
-        
-         boolean inputValid = false;
-         int stringToNum = 0;
 
-            try {
-                stringToNum = Integer.parseInt(inputs[0]);
-                if (stringToNum < 0) {
-                System.out.println("Please enter a positive number.");
-                } else {
-                inputValid = true;
-                }
-            } catch(NumberFormatException ex) {
-                System.out.println("Please enter a number.");
-            }
-     
-        return stringToNum;    
+    protected static int stringToInt(String[] inputs) {
+
+        boolean inputValid = false;
+        int stringToNum = 0;
+
+        try {
+            stringToNum = Integer.parseInt(inputs[0]);
+            WheatControl.checkNumber(stringToNum);
+            inputValid = true;
+        } catch (NumberFormatException ex) {
+            System.out.println("Please enter a number.");
+        } catch (WheatControlException positive) {
+            System.out.println(positive.getMessage());
+        }
+
+        return stringToNum;
     }
-    
+
 }

@@ -7,6 +7,7 @@ import model.Game;
 import model.InventoryItem;
 import model.Animal;
 import model.Provision;
+import control.StorehouseControl;
 
 /**
  *
@@ -90,36 +91,8 @@ public class ReportsMenuView extends ViewBase {
     private void animalsInStorehouse() {
         System.out.println("The Animlas in this game are:");
 
+        StorehouseControl.animalList();
         
-        Game game = CityOfAaron.getCurrentGame();
-        Storehouse storehouse = game.getTheStorehouse();
-        Animal[] animals = storehouse.getAnimals();
-        
-        if (animals == null) {
-            System.out.println("There are no animals in the Storehouse.");
-        } else {
-            String animalName;
-            int animalCount;
-            int animalAge;
-            for (Animal animal : animals) {
-                animalName = animal.getName();
-                animalCount = animal.getQuantity();
-                animalAge = animal.getAge();
-                System.out.println(animalCount + " " + animalName + ": " + animalAge + "-years-old");
-            }
-            int maxValue = animals[0].getAge();
-            String name;
-            for (int i=0; i< animals.length; i++) {
-               if (animals[i].getAge()> maxValue) {
-                   maxValue = animals[i].getAge();
-                   name = animals[i].getName();
-                   
-                   System.out.println("\nYour " + name + " is the oldest animal\n"
-                                    + "you have, at " + maxValue + "-years old.\n"
-                                    + "Concider aquiring a new one\n");
-               } 
-            }  
-        }
         saveReport();
     }
 

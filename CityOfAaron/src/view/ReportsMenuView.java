@@ -8,6 +8,7 @@ import model.InventoryItem;
 import model.Animal;
 import model.Provision;
 import control.StorehouseControl;
+import exceptions.StorehouseControlException;
 
 /**
  *
@@ -98,32 +99,12 @@ public class ReportsMenuView extends ViewBase {
 
     private void toolsInStorehouse() {
         System.out.println("The tools of this game are:");
-
-        Game game = CityOfAaron.getCurrentGame();
-        Storehouse storehouse = game.getTheStorehouse();
-        InventoryItem[] tools = storehouse.getTools();
-
-        if (tools == null) {
-            System.out.println("There are no tools in the Storehouse.");
-        } else {
-            String toolName;
-            int toolCount;
-            for (int i = 0; i < tools.length; i++) {
-                toolName = tools[i].getName();
-                toolCount = tools[i].getQuantity();
-                System.out.println(toolCount + " " + toolName);
-            }
-            long total = 0;
-            for (InventoryItem tool : tools) {
-                //put tool quantity into variable toolCount so can += with long total. 
-                toolCount = tool.getQuantity(); 
-                total += toolCount;
-            }
-            System.out.println("There is a total of " + total + " tools in the Storehouse.");
+        try {
+            StorehouseControl.toolList();
+        } catch (StorehouseControlException ex) {
+            System.out.println(ex.getMessage());
         }
-
         saveReport();
-        //return null;
     }
 
     private void provisionsInStorehouse() {

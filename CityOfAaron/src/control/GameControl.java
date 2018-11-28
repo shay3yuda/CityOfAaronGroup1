@@ -89,7 +89,7 @@ public class GameControl {
         return false;
     }
 
-    public static void saveGameToFile(Game game, String filename) throws GameControlException {
+    public static void saveGameToFile(Game game, String filename) {
         //stub function that will be implamented later
     }
 

@@ -40,21 +40,21 @@ public class TestFakeRandom {
     @Test
     public void demonstrateInjectingFakeRandom() {
         
-        FakeRandom fakeRandom = new FakeRandom();
-        
-        //Here's the trick... remember that protected static setRandomGenerator() method
-        //in our GameControl class? This is what that's for. We're going to inject
-        //a different Random object, our fakeRandom, and it's going to provide the
-        //predetermined value to the getRandomNumber() function.
-        GameControl.setRandomGenerator(fakeRandom);
-        
-        //Voila!
-        fakeRandom.add(5); //17 + 5 = 22
-        assertEquals(22, GameControl.getRandomNumber(17, 27));
-        
-        //We can add new numbers to the list any time we need to.
-        fakeRandom.add(35); //0 + 35 = 35
-        assertEquals(35, GameControl.getRandomNumber(0, 100));
-        
+//        FakeRandom fakeRandom = new FakeRandom();
+//        
+//        //Here's the trick... remember that protected static setRandomGenerator() method
+//        //in our GameControl class? This is what that's for. We're going to inject
+//        //a different Random object, our fakeRandom, and it's going to provide the
+//        //predetermined value to the getRandomNumber() function.
+//        GameControl.setRandomGenerator(fakeRandom);
+//        
+//        //Voila!
+//        fakeRandom.add(5); //17 + 5 = 22
+//        assertEquals(22, GameControl.getRandomNumber(17, 27));
+//        
+//        //We can add new numbers to the list any time we need to.
+//        fakeRandom.add(35); //0 + 35 = 35
+//        assertEquals(35, GameControl.getRandomNumber(0, 100));
+//        
     }
 }

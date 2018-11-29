@@ -10,6 +10,7 @@ import model.Animal;
 import model.Game;
 import model.Provision;
 import exceptions.StorehouseControlException;
+import javafx.util.Pair;
 
 /**
  *
@@ -59,39 +60,23 @@ public class StorehouseControl {
         return provisions;
     }
 
-    public static void animalList() {
+    public static Pair[] animalMaxAge() {
         Game game = CityOfAaron.getCurrentGame();
         Storehouse storehouse = game.getTheStorehouse();
         Animal[] animals = storehouse.getAnimals();
 
-        if (animals == null) {
-            System.out.println("There are no animals in the Storehouse.");
-        } else {
-            String animalName;
-            int animalCount;
-            int animalAge;
-            for (Animal animal : animals) {
-                animalName = animal.getName();
-                animalCount = animal.getQuantity();
-                animalAge = animal.getAge();
-                System.out.println(animalCount + " " + animalName + ": " + animalAge + "-years-old");
+        int maxValue = animals[0].getAge();
+        String name = "";
+        for (int i = 0; i < animals.length; i++) {
+            if (animals[i].getAge() > maxValue) {
+                maxValue = animals[i].getAge();
+                name = animals[i].getName();
             }
-            int maxValue = animals[0].getAge();
-            String name = "";
-            for (int i = 0; i < animals.length; i++) {
-                if (animals[i].getAge() > maxValue) {
-                    maxValue = animals[i].getAge();
-                    name = animals[i].getName();
-                }
-            }
-
-            System.out.println("\nYour " + name + " is the oldest animal\n"
-                    + "you have, at " + maxValue + "-years old.\n"
-                    + "Concider aquiring a new one\n");
         }
+        return new Pair[]{new Pair<>(name, maxValue)};
     }
 
-    public static void provisionList() {
+    public static Pair[] provisionMinValue() {
 
         Provision[] provisions = CityOfAaron.getCurrentGame().getTheStorehouse().getProvisions();
 
@@ -103,19 +88,20 @@ public class StorehouseControl {
                 name = provisions[i].getName();
             }
         }
-        System.out.println("You only have " + minValue + " left of " + name + ". You should search for more.\n");
+        return new Pair[]{new Pair<>(name, minValue)};
+        
     }
-    
-    public static long toolQuantity() {      
+
+    public static long toolQuantity() {
         InventoryItem[] tools = CityOfAaron.getCurrentGame().getTheStorehouse().getTools();
-            int toolCount;
-            long total = 0;
-            for (InventoryItem tool : tools) {
-                //put tool quantity into variable toolCount so can += with long total. 
-                toolCount = tool.getQuantity(); 
-                total += toolCount;
-            }      
-            return total;        
+        int toolCount;
+        long total = 0;
+        for (InventoryItem tool : tools) {
+            //put tool quantity into variable toolCount so can += with long total. 
+            toolCount = tool.getQuantity();
+            total += toolCount;
+        }
+        return total;
     }
 
 }

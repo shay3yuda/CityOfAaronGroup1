@@ -9,6 +9,7 @@ import model.Animal;
 import model.Provision;
 import control.StorehouseControl;
 import exceptions.StorehouseControlException;
+import javafx.util.Pair;
 
 /**
  *
@@ -90,10 +91,26 @@ public class ReportsMenuView extends ViewBase {
     }
 
     private void animalsInStorehouse() {
-        System.out.println("The Animlas in this game are:");
+        System.out.println("The Animals in this game are:");
 
-        StorehouseControl.animalList();
+        Game game = CityOfAaron.getCurrentGame();
+        Storehouse storehouse = game.getTheStorehouse();
+        Animal[] animals = storehouse.getAnimals();
 
+        String animalName;
+        int animalCount;
+        int animalAge;
+        for (Animal animal : animals) {
+            animalName = animal.getName();
+            animalCount = animal.getQuantity();
+            animalAge = animal.getAge();
+            System.out.println(animalCount + " " + animalName + ": " + animalAge + "-years-old");
+        }
+
+        Pair[] maxAge = StorehouseControl.animalMaxAge();
+        System.out.println("\nYour " + maxAge[0].getKey() + " is the oldest animal\n"
+                + "you have, at " + maxAge[0].getValue() + "-years old.\n"
+                + "Consider acquiring a new one.\n");
         saveReport();
     }
 
@@ -107,7 +124,7 @@ public class ReportsMenuView extends ViewBase {
             toolCount = tools[i].getQuantity();
             System.out.println(toolCount + " " + toolName);
         }
-        
+
         //get tool quantity and put in total variable to use in println
         long total = StorehouseControl.toolQuantity();
         System.out.println("There is a total of " + total + " tools in the Storehouse.");
@@ -129,8 +146,8 @@ public class ReportsMenuView extends ViewBase {
             System.out.println(provisionName + ", " + provisionCount);
         }
 
-        StorehouseControl.provisionList();
-
+        Pair[] minValue = StorehouseControl.provisionMinValue();
+        System.out.println("You only have " + minValue[0].getValue() + " left of " + minValue[0].getKey() + ". You should search for more.\n");
         saveReport();
     }
 

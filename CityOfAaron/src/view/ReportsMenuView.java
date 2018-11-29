@@ -99,11 +99,19 @@ public class ReportsMenuView extends ViewBase {
 
     private void toolsInStorehouse() {
         System.out.println("The tools of this game are:");
-        try {
-            StorehouseControl.toolList();
-        } catch (StorehouseControlException ex) {
-            System.out.println(ex.getMessage());
+        InventoryItem[] tools = CityOfAaron.getCurrentGame().getTheStorehouse().getTools();
+        String toolName;
+        int toolCount;
+        for (int i = 0; i < tools.length; i++) {
+            toolName = tools[i].getName();
+            toolCount = tools[i].getQuantity();
+            System.out.println(toolCount + " " + toolName);
         }
+        
+        //get tool quantity and put in total variable to use in println
+        long total = StorehouseControl.toolQuantity();
+        System.out.println("There is a total of " + total + " tools in the Storehouse.");
+
         saveReport();
     }
 
@@ -120,7 +128,7 @@ public class ReportsMenuView extends ViewBase {
             provisionName = provision.getName();
             System.out.println(provisionName + ", " + provisionCount);
         }
-        
+
         StorehouseControl.provisionList();
 
         saveReport();

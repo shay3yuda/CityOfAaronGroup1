@@ -106,26 +106,16 @@ public class StorehouseControl {
         System.out.println("You only have " + minValue + " left of " + name + ". You should search for more.\n");
     }
     
-    public static void toolList() throws StorehouseControlException {
+    public static long toolQuantity() {      
         InventoryItem[] tools = CityOfAaron.getCurrentGame().getTheStorehouse().getTools();
-        if (tools == null) {
-            throw new StorehouseControlException("There are no tools in the Storehouse.");
-        } else {
-            String toolName;
             int toolCount;
-            for (int i = 0; i < tools.length; i++) {
-                toolName = tools[i].getName();
-                toolCount = tools[i].getQuantity();
-                System.out.println(toolCount + " " + toolName);
-            }
             long total = 0;
             for (InventoryItem tool : tools) {
                 //put tool quantity into variable toolCount so can += with long total. 
                 toolCount = tool.getQuantity(); 
                 total += toolCount;
-            }
-            System.out.println("There is a total of " + total + " tools in the Storehouse.");
-        }
+            }      
+            return total;        
     }
 
 }

@@ -1,5 +1,7 @@
 
 package view;
+import control.GameControl;
+import exceptions.GameControlException;
 
 /**
  *
@@ -48,13 +50,15 @@ public class LoadGameView extends ViewBase {
     @Override
     public boolean doAction(String[] inputs){
         
-         if(inputs[0] == null || inputs[0].equals("")) {
-            System.out.println("No Game Name entered; returning to the Main Menu\n");
+        
+       try {
+            GameControl.testInput(inputs);
+            String gameName = inputs[0];
+            loadSavedGameFromName(gameName); 
+        } catch (GameControlException ex) {
+            System.out.println(ex.getMessage());
             return false;
         }
-        
-        String gameName = inputs[0];
-        loadSavedGameFromName(gameName);
         
         return false;
     }

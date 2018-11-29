@@ -14,19 +14,19 @@ import exceptions.WheatControlException;
  */
 public class WheatControl {
 
-    public static int calculateLossToRats(int tithesPercent, int wheatInStorage) {
+    public static int calculateLossToRats(int tithesPercent, int wheatInStorage) throws WheatControlException {
         //Calculate the amount of wheat in storage lost to rats, based on
         //the percentage of tithing paid. Assume that GameControl.getRandomNumber(low,high)
         //is available to be called.
 
         //if wheatInStorage < 0 then return -1
         if (wheatInStorage < 0) {
-            return -1;
+            throw new WheatControlException("There is no wheat in storage.");
         }
 
         //if tithingPercent < 0 OR tithingPercent > 100 then return -2
         if (tithesPercent < 0 || tithesPercent > 100) {
-            return -2;
+            throw new WheatControlException("Tithing amount should be between 0-100.");
         }
 
         //chanceOfRats = GameControl.getRandomNumber(1,100)
@@ -76,17 +76,17 @@ public class WheatControl {
         return bushelsLost;
     }
 
-    public static int calculateHarvest(int tithesPercent, int acresPlanted) {
+    public static int calculateHarvest(int tithesPercent, int acresPlanted) throws WheatControlException {
 
         // Calculate the amount of wheat harvested, based on the percentage 
         // of tithing paid. Assume that GameControl.getRandomNumber(low,high) 
         // is available to be called.
         if (acresPlanted < 0) {
-            return -1;
+            throw new WheatControlException("There is no wheat in storage.");
         }
 
         if (tithesPercent < 0 || tithesPercent > 100) {
-            return -2;
+            throw new WheatControlException("Tithing amount should be between 0-100.");
         }
 
         //create variables for low and hight, and set values in the if statements

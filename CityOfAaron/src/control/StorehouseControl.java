@@ -5,11 +5,9 @@ import model.ItemType;
 import model.Condition;
 import model.Storehouse;
 import cityofaaron.CityOfAaron;
-import model.Author;
 import model.Animal;
 import model.Game;
 import model.Provision;
-import exceptions.StorehouseControlException;
 import javafx.util.Pair;
 
 /**

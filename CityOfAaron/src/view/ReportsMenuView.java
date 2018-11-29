@@ -8,7 +8,6 @@ import model.InventoryItem;
 import model.Animal;
 import model.Provision;
 import control.StorehouseControl;
-import exceptions.StorehouseControlException;
 import javafx.util.Pair;
 
 /**

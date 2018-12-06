@@ -89,6 +89,7 @@ public class ToolReportView extends ViewBase {
             report.println();
             report.println("End of Tool Report");
             
+            report.flush();
         } catch (IOException exception) {
             exception.printStackTrace();
         }

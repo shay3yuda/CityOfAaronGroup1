@@ -59,7 +59,7 @@ public class BuyLandView extends ViewBase {
 
     private void saveAcersBought(int acreNum) {
         //stub function, to be completed after AnnualReport is implemented 
-        System.out.println("\n" + acreNum + " acres of land purchased is being saved\n"
+        this.console.println("\n" + acreNum + " acres of land purchased is being saved\n"
                 + "Implentations coming soon\n"
                 + "*Returning To Manage Crop Menu\n");//TODO: call function to make sure the amount being bought can be afford, update, and save.
     }

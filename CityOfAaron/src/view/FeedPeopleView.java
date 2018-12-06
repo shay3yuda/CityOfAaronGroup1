@@ -58,7 +58,7 @@ public class FeedPeopleView extends ViewBase {
            
     private void saveBushelsFed(int bushelsNum) {
         //stub function, to be completed after AnnualReport is implemented 
-        System.out.println("\nYour People have been fed " + bushelsNum + " bushels\n"
+        this.console.println("\nYour People have been fed " + bushelsNum + " bushels\n"
                            + "Implentations coming soon\n"
                            + "*Returning To Manage Crop Menu\n");//TODO call function to check and make sure the amount doesn't exceed the wheat in storage and then update and save.
     }       

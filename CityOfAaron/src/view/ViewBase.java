@@ -1,8 +1,9 @@
 package view;
 
-import java.util.Scanner;
 import control.WheatControl;
 import exceptions.WheatControlException;
+import java.io.*;
+import cityofaaron.CityOfAaron;
 
 /**
  *
@@ -19,6 +20,10 @@ public abstract class ViewBase implements View {
      * can change each time it's displayed
      */
     protected abstract String getMessage();
+    
+    //allows every view layer class to reference input and output streams with this.console and this.keyboard
+    protected final BufferedReader keyboard = CityOfAaron.getInFile();
+    protected final PrintWriter console = CityOfAaron.getOutFile();
 
     /**
      * get and set input from user
@@ -50,7 +55,7 @@ public abstract class ViewBase implements View {
             // only print if it is non-null
             String message = getMessage();
             if (message != null) {
-                System.out.println(getMessage());
+                this.console.println(getMessage());
             }
 
             String[] inputs = getInputs();
@@ -68,14 +73,15 @@ public abstract class ViewBase implements View {
      */
     protected String getUserInput(String prompt, boolean allowEmpty) {
 
-        Scanner keyboard = new Scanner(System.in);
         String input = "";
         boolean inputReceived = false;
+        
+        try {
 
         while (inputReceived == false) {
 
-            System.out.println(prompt);
-            input = keyboard.nextLine();
+            this.console.println(prompt);
+            input = this.keyboard.readLine();
 
             // Make sure we avoid a null-pointer error.
             if (input == null) {
@@ -88,6 +94,10 @@ public abstract class ViewBase implements View {
             if (input.equals("") == false || allowEmpty == true) {
                 inputReceived = true;
             }
+        }
+        
+        } catch (Exception e) {
+            ErrorView.display(ViewBase.class.getName(), "Error reading input: " + e.getMessage());
         }
 
         return input;
@@ -119,17 +129,18 @@ public abstract class ViewBase implements View {
 
     protected static int stringToInt(String[] inputs) {
 
+        //TODO took static away from the method signature, was getting non-static variable error with it
         boolean inputValid = false;
         int stringToNum = 0;
-
+        
         try {
             stringToNum = Integer.parseInt(inputs[0]);
             WheatControl.checkNumber(stringToNum);
             inputValid = true;
         } catch (NumberFormatException ex) {
-            System.out.println("Please enter a number.");
+            ErrorView.display(ViewBase.class.getName(), "Please enter a number.");
         } catch (WheatControlException positive) {
-            System.out.println(positive.getMessage());
+            ErrorView.display(ViewBase.class.getName(), positive.getMessage());
         }
 
         return stringToNum;

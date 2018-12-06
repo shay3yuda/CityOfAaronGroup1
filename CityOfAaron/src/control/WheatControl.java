@@ -14,7 +14,7 @@ import exceptions.WheatControlException;
  */
 public class WheatControl {
 
-    public static int calculateLossToRats(int tithesPercent, int wheatInStorage) throws WheatControlException {
+    public static int calculateLossToRats(int tithesPercent, int wheatInStorage) throws WheatControlException, GameControlException {
         //Calculate the amount of wheat in storage lost to rats, based on
         //the percentage of tithing paid. Assume that GameControl.getRandomNumber(low,high)
         //is available to be called.
@@ -30,14 +30,10 @@ public class WheatControl {
         }
 
         //chanceOfRats = GameControl.getRandomNumber(1,100)
-        try {
-            int chanceOfRats = GameControl.getRandomNumber(1, 100);
-            //if chanceOfRats >= 30 then return 0
-            if (chanceOfRats >= 30) {
-                return 0;
-            }
-        } catch (GameControlException ex) {
-            System.out.println(ex.getMessage());
+        int chanceOfRats = GameControl.getRandomNumber(1, 100);
+        //if chanceOfRats >= 30 then return 0
+        if (chanceOfRats >= 30) {
+            return 0;
         }
 
         int high = 2;
@@ -63,20 +59,16 @@ public class WheatControl {
 
         int bushelsLost = 0;
         //percentLost = getRandomNumber(low, high)*0.01 //turn into a fraction        
-        try {
-            int lossToRats = GameControl.getRandomNumber(low, high);
-            double percentLost = lossToRats * 0.01;
+        int lossToRats = GameControl.getRandomNumber(low, high);
+        double percentLost = lossToRats * 0.01;
 
-            //return wheatInStorage * percentLost //will need to be cast back to int        
-            bushelsLost = (int) (wheatInStorage * percentLost);
+        //return wheatInStorage * percentLost //will need to be cast back to int        
+        bushelsLost = (int) (wheatInStorage * percentLost);
 
-        } catch (GameControlException ex) {
-            System.out.println(ex.getMessage());
-        }
         return bushelsLost;
     }
 
-    public static int calculateHarvest(int tithesPercent, int acresPlanted) throws WheatControlException {
+    public static int calculateHarvest(int tithesPercent, int acresPlanted) throws WheatControlException, GameControlException {
 
         // Calculate the amount of wheat harvested, based on the percentage 
         // of tithing paid. Assume that GameControl.getRandomNumber(low,high) 
@@ -113,11 +105,7 @@ public class WheatControl {
 
         int yield = 0;
 
-        try {
-            yield = GameControl.getRandomNumber(low, high);
-        } catch (GameControlException ex) {
-            System.out.println(ex.getMessage());
-        }
+        yield = GameControl.getRandomNumber(low, high);
 
         return yield * acresPlanted;
     }
@@ -126,8 +114,7 @@ public class WheatControl {
         if (stringToNum < 0) {
             throw new WheatControlException("Please enter a positive number.");
         }
-    }    
-    
+    }
 
     public static void checkTithing(int tithes) throws WheatControlException {
         if (tithes < 0) {

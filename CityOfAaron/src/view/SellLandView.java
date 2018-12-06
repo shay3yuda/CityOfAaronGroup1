@@ -60,7 +60,7 @@ public class SellLandView extends ViewBase {
     
     private void saveAcersSold(int num) {
         //stub function, to be completed after AnnualReport is implemented 
-        System.out.println("\n" + num + " acres of land sold is being saved\n"
+        this.console.println("\n" + num + " acres of land sold is being saved\n"
                            + "Implentations coming soon\n"
                            + "*Returning To Manage Crop Menu\n");//TODO call function to save and update land owned.
     } 

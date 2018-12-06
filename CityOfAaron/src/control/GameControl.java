@@ -5,7 +5,6 @@
  */
 package control;
 
-import cityofaaron.CityOfAaron;
 import java.util.Random;
 import model.Game;
 import model.Player;
@@ -16,6 +15,8 @@ import model.Provision;
 import model.InventoryItem;
 import model.Animal;
 import exceptions.GameControlException;
+import java.io.*;
+import cityofaaron.CityOfAaron;
 
 /**
  *
@@ -71,30 +72,59 @@ public class GameControl {
 
     }
 
-    public static String loadGameFromFile(String filename) {
-        // place holder function.
-        String name = filename;
+    public static Game loadGameFromFile(String filePath) throws GameControlException, IOException {
 
-        return name;
+        if (filePath == null) {
+            throw new GameControlException("Please enter a valid file path.");
+        }
+
+        Game game = null;
+
+        try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(filePath))) {
+            game = (Game)in.readObject();
+        } catch (IOException | ClassNotFoundException ex) {
+            ex.printStackTrace();
+        }
+
+        CityOfAaron.setCurrentGame(game);
+        Player player = new Player();
+        game.getThePlayer();
+        game.setThePlayer(player);
+
+        return game;
     }
 
-    public static boolean gameShouldEnd(int mortalityRate, int yearNumber) throws GameControlException{
-        //TODO stub function, to fully implement change mortality rate to > 50%, not zero. Do this after AnnualReport is fully implemented.
+    public static boolean gameShouldEnd(int mortalityRate) {
+        //TODO stub function, to fully implement change mortality rate to > 50%, not zero
         if (mortalityRate > 0) {
-            throw new GameControlException("More than 50% of your population died, therefore this game is over. Repent and try again."); 
-            //return true;
-        } else if (yearNumber > 10) {
-            throw new GameControlException("Ten glorious years have passed, therefore this game is over. Congratulations on a successful game!");
+            // throw new GameControlException("More than 50% of your population died, therefore this game is over. Repent and try again."); 
+            return true;
         }
         return false;
     }
 
-    public static void saveGameToFile(Game game, String filename) {
-        //stub function that will be implamented later
+    public static boolean gameMatures(int yearNumber) {
+        if (yearNumber > 10) {
+            return true;
+        }
+        return false;
+    }
+
+    public static void saveGameToFile(Game game, String filePath) throws GameControlException, IOException {
+
+        if (filePath == null) {
+            throw new GameControlException("Please enter a valid file path.");
+        }
+
+        try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(filePath))) {
+            out.writeObject(game);
+        } catch (IOException ex) {
+            throw new IOException("I/O Error: " + ex.getMessage());
+        }
     }
 
     public static void saveReportToFile(String[] filename) {
-        System.out.println("Report is saved");
+        //TODO stub funtion
     }
 
     public static Game createNewGame(String playerName) {
@@ -139,7 +169,7 @@ public class GameControl {
     public static void testInput(String[] inputs) throws GameControlException {
 
         if (inputs[0] == null || inputs[0].equals("")) {
-            throw new GameControlException("No player name entered; returning to the Main Menu.");
+            throw new GameControlException("No name entered; returning to the Main Menu.");
         }
     }
 }

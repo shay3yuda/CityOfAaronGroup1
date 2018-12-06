@@ -10,7 +10,7 @@ import exceptions.GameControlException;
 public class GameMenuView extends ViewBase {
 
 //    private void annualReportView() {
-//        System.out.println("annualReportView() called. Implementation coming soon");
+//        this.console.println("annualReportView() called. Implementation coming soon");
 //        AnnualReportView annualReport = new AnnualReportView();
 //        annualReport.displayView();
 //    }
@@ -104,31 +104,35 @@ public class GameMenuView extends ViewBase {
         boolean keepGoing = true;
 
         while (keepGoing == true) {
-            //display the annual report above the GameMenuView
-            getAnnualReport();
+
             //check to see if the game should end and if so, display a message and return to Main Menu 
-//TODO Implement try catch.
-            try {
+            //TODO Implement try catch.
+            //TODO when fully implemented, this will contain mortality rate variable from annual report 
+            //TODO when fully implemented, this will contain currentYear variable from annual report.
+            //TODO create end of game report showing total game statistics. Use Annual Report format but bring in stats from every year.
+            //display the annual report above the GameMenuView
+            liveTheYear();
+            getAnnualReport();
+            if (GameControl.gameShouldEnd(0)) {
                 //TODO when fully implemented, this will contain mortality rate variable from annual report 
+                this.console.println("More than 50% of your population died, therefore this game is over. Repent and try again.");
+                return;
+            } else if (GameControl.gameMatures(1)) {
                 //TODO when fully implemented, this will contain currentYear variable from annual report.
                 //TODO create end of game report showing total game statistics. Use Annual Report format but bring in stats from every year.
-                GameControl.gameShouldEnd(0, 1);
-            } catch (GameControlException ex) {
-                System.out.println(ex.getMessage());
+                this.console.println("Ten glorious years have passed, therefore this game is over. Congratulations on a successful game!");
                 return;
-            } 
-                // get message that should be displayed
-                // only print if it is non-null
-                String message = getMessage();
-                if (message != null) {
-                    System.out.println(getMessage());
-                }
-                String[] inputs = getInputs();
-                keepGoing = doAction(inputs);
             }
+            // get message that should be displayed
+            // only print if it is non-null
+            String message = getMessage();
+            if (message != null) {
+                this.console.println(getMessage());
+            }
+            String[] inputs = getInputs();
+            keepGoing = doAction(inputs);
         }
-
-    
+    }
 
     private void mapView() {
         View mapView = new MapView();
@@ -146,22 +150,22 @@ public class GameMenuView extends ViewBase {
     }
 
     private void liveTheYear() {
-        System.out.println("liveTheYear() called. Implementation coming soon"); //TODO liveTheYear stub function needs to be fully implemented
+        //this.console.println("liveTheYear() called."); //TODO liveTheYear stub function needs to be fully implemented
     }
 
     private void reportsMenu() {
-        ReportsMenuView reportsMenu = new ReportsMenuView(); // TODO change ReportsMenuView to View once it is refactored
+        View reportsMenu = new ReportsMenuView();
         reportsMenu.displayView();
     }
 
     private void saveGame() {
-        SaveGameView saveGame = new SaveGameView(); // TODO change SaveGameView to View once it is refactored
+        View saveGame = new SaveGameView();
         saveGame.displayView();
     }
 
     private void getAnnualReport() {
         //TODO getAnnualReport stub function needs to be fully implemented to have variables instead of static information.
-        System.out.println("Annual Report\n"
+        this.console.println("Annual Report\n"
                 + "----------------------\n"
                 + "The Year Number is 1.\n"
                 + "0 people starved.\n"

@@ -68,9 +68,9 @@ public class NewLocationView extends ViewBase {
             inputValid = true;
             moveToNewLocation(column, row);
         } catch (NumberFormatException ex) {
-            System.out.println("\nPlease enter a number.\n");
+            ErrorView.display(this.getClass().getName(), "Please enter a number.");
         } catch (MapControlException mce) {
-            System.out.println(mce.getMessage());
+            ErrorView.display(this.getClass().getName(), mce.getMessage());
         }
 
         return !inputValid;
@@ -83,7 +83,7 @@ public class NewLocationView extends ViewBase {
         point.setRow(row);
 
         //TODO call setCurrentLocation() to set coordinates then the location at new coordinates
-        System.out.println("\nsetCurrentLocation() called.\n");
+        this.console.println("\nsetCurrentLocation() called.\n");
     }
 
 }

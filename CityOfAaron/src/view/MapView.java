@@ -50,9 +50,9 @@ public class MapView extends ViewBase {
     }
     
     public void displayMap() {
-        System.out.println("As the ruler of the City of Aaron,");
-        System.out.println("you have access to the city map and its secrets.");
-        System.out.println("------------------------------");
+        this.console.println("As the ruler of the City of Aaron,");
+        this.console.println("you have access to the city map and its secrets.");
+        this.console.println("------------------------------");
         
         Map map = MapControl.createMap();    
         Location[][] locations = map.getLocations();
@@ -60,20 +60,20 @@ public class MapView extends ViewBase {
         for (int i = 0; i < locations.length; i++) {
 
             for (int j = 0; j < locations[i].length; j++) {
-                System.out.printf("%3s", map.getLocations()[i][j].getMapSymbol());
+                this.console.printf("%3s", map.getLocations()[i][j].getMapSymbol());
             }
-            System.out.println();
+            this.console.println();
         }
-        System.out.println("------------------------------");
-        System.out.println("C - Ruler's Court");
-        System.out.println("S - City Granary and Storehouse");
-        System.out.println("F - Wheat field");
-        System.out.println("U - Undeveloped land");
-        System.out.println("V - Village");
-        System.out.println("R - River"); 
-        System.out.println("B - Border of the Lamanite lands");
-        System.out.println("T - Temple");
-        System.out.println("W - Watchtower\n"); 
+        this.console.println("------------------------------");
+        this.console.println("C - Ruler's Court");
+        this.console.println("S - City Granary and Storehouse");
+        this.console.println("F - Wheat field");
+        this.console.println("U - Undeveloped land");
+        this.console.println("V - Village");
+        this.console.println("R - River"); 
+        this.console.println("B - Border of the Lamanite lands");
+        this.console.println("T - Temple");
+        this.console.println("W - Watchtower\n"); 
         pause(1500);
     }
 

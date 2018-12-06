@@ -51,7 +51,7 @@ public class GetRandomNumberTests {
 //            int high = testRanges[i][1];
 //            
 //            int random = GameControl.getRandomNumber(low, high);
-//            System.out.printf("%d <= %d <= %d\n", low, random, high);
+//            this.console.printf("%d <= %d <= %d\n", low, random, high);
 //            
 //            assertTrue(
 //                String.format("%d should be between %d and %d", random, low, high),

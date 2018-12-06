@@ -54,7 +54,7 @@ public class PlantCropsView extends ViewBase {
            
     private void saveCropsPlanted(int cropNum) {
         //stub function, to be completed after AnnualReport is implemented 
-        System.out.println("\n" + cropNum + " acres will be planted\n"
+        this.console.println("\n" + cropNum + " acres will be planted\n"
                            + "Implentations coming soon\n"
                            + "*Returning To Manage Crop Menu\n");//TODO: call function to make sure the amount being planted is possible, update, and save.
     }       

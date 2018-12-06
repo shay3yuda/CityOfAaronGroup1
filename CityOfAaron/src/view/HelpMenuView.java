@@ -55,19 +55,19 @@ public class HelpMenuView extends ViewBase {
     public boolean doAction(String[] inputs){
         switch(inputs[0].trim().toUpperCase()){
             case "G":
-                System.out.println("Manage your resources wisely and remain ruler for 10 years.\n");
+                this.console.println("Manage your resources wisely and remain ruler for 10 years.\n");
                 break;   
             case "C":
-                System.out.println("Messages about where the City of Aaron is\n");
+                this.console.println("Messages about where the City of Aaron is\n");
                 break;
             case "V":
-                System.out.println("Message about how to view the Map\n");
+                this.console.println("Message about how to view the Map\n");
                 break;
             case "L":
-                System.out.println("Message about how to move to another Location\n");
+                this.console.println("Message about how to move to another Location\n");
                 break;
             case "S":
-                System.out.println("Message about how to display the list of items in the Storehouse\n");
+                this.console.println("Message about how to display the list of items in the Storehouse\n");
                 break;
             case "M":
                 return false;

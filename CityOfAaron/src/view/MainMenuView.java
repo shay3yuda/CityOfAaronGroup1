@@ -68,7 +68,7 @@ public class MainMenuView extends ViewBase {
                 helpMenu();
                 break;
             case "Q":
-                System.out.println("See you later!");
+                this.console.println("See you later!");
                 return false;
         }
 
@@ -76,7 +76,7 @@ public class MainMenuView extends ViewBase {
     }
 
     private void startNewGame() {
-        NewGameView view = new NewGameView(); // TODO change NewGameView to View once NewGameView is refactored
+        View view = new NewGameView(); 
         view.displayView();
     }
 
@@ -86,7 +86,7 @@ public class MainMenuView extends ViewBase {
     }
 
     private void loadSavedGame() {
-        LoadGameView loadGame = new LoadGameView(); // TODO change LoadGameView to View once it is refactored
+        View loadGame = new LoadGameView(); 
         loadGame.displayView();
     }
 }

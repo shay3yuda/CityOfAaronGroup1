@@ -28,8 +28,11 @@ public class ReportsMenuView extends ViewBase {
         return "Reports Menu\n"
                 + "-----------------------\n"
                 + "A - View the animals in the storehouse\n"
+                + "R - Print animal report\n"
                 + "T - View the tools in the storehouse\n"
+                + "O - Print tool report\n"
                 + "P - View the provisions in the storehouse\n"
+                + "V - Print provision report\n"
                 + "G - View the authors of this game\n"
                 + "Q - Return to Game Menu\n";
     }
@@ -82,7 +85,7 @@ public class ReportsMenuView extends ViewBase {
                 authorsOfGame();
                 break;
             case "Q":
-                System.out.println("Returning to Game Menu\n");
+                this.console.println("Returning to Game Menu\n");
                 return false;
         }
 
@@ -90,7 +93,7 @@ public class ReportsMenuView extends ViewBase {
     }
 
     private void animalsInStorehouse() {
-        System.out.println("The Animals in this game are:");
+        this.console.println("The Animals in this game are:");
 
         Game game = CityOfAaron.getCurrentGame();
         Storehouse storehouse = game.getTheStorehouse();
@@ -103,37 +106,37 @@ public class ReportsMenuView extends ViewBase {
             animalName = animal.getName();
             animalCount = animal.getQuantity();
             animalAge = animal.getAge();
-            System.out.println(animalCount + " " + animalName + ": " + animalAge + "-years-old");
+            this.console.println(animalCount + " " + animalName + ": " + animalAge + "-years-old");
         }
 
         Pair[] maxAge = StorehouseControl.animalMaxAge();
-        System.out.println("\nYour " + maxAge[0].getKey() + " is the oldest animal\n"
+        this.console.println("\nYour " + maxAge[0].getKey() + " is the oldest animal\n"
                 + "you have, at " + maxAge[0].getValue() + "-years old.\n"
                 + "Consider acquiring a new one.\n");
         saveReport();
     }
 
     private void toolsInStorehouse() {
-        System.out.println("The tools of this game are:");
+        this.console.println("The tools of this game are:");
         InventoryItem[] tools = CityOfAaron.getCurrentGame().getTheStorehouse().getTools();
         String toolName;
         int toolCount;
         for (int i = 0; i < tools.length; i++) {
             toolName = tools[i].getName();
             toolCount = tools[i].getQuantity();
-            System.out.println(toolCount + " " + toolName);
+            this.console.println(toolCount + " " + toolName);
         }
 
         //get tool quantity and put in total variable to use in println
         long total = StorehouseControl.toolQuantity();
-        System.out.println("There is a total of " + total + " tools in the Storehouse.");
+        this.console.println("There is a total of " + total + " tools in the Storehouse.");
 
         saveReport();
     }
 
     private void provisionsInStorehouse() {
 
-        System.out.println("The provisions you have are:");
+        this.console.println("The provisions you have are:");
 
         Provision[] provisions = CityOfAaron.getCurrentGame().getTheStorehouse().getProvisions();
 
@@ -142,17 +145,17 @@ public class ReportsMenuView extends ViewBase {
         for (Provision provision : provisions) {
             provisionCount = provision.getQuantity();
             provisionName = provision.getName();
-            System.out.println(provisionName + ", " + provisionCount);
+            this.console.println(provisionName + ", " + provisionCount);
         }
 
         Pair[] minValue = StorehouseControl.provisionMinValue();
-        System.out.println("You only have " + minValue[0].getValue() + " left of " + minValue[0].getKey() + ". You should search for more.\n");
+        this.console.println("You only have " + minValue[0].getValue() + " left of " + minValue[0].getKey() + ". You should search for more.\n");
         saveReport();
     }
 
     private Author authorsOfGame() {
 
-        System.out.println("The authors of this game are:");
+        this.console.println("The authors of this game are:");
 
         Game game = CityOfAaron.getCurrentGame();
         Storehouse storehouse = game.getTheStorehouse();
@@ -160,10 +163,10 @@ public class ReportsMenuView extends ViewBase {
 
         for (int i = 0; i < authors.length; i++) {
 
-            System.out.println(authors[i].getName());
+            this.console.println(authors[i].getName());
 
         }
-        System.out.println();
+        this.console.println();
         saveReport();
         return null;
     }
@@ -178,7 +181,7 @@ public class ReportsMenuView extends ViewBase {
 
         switch (inputs[0].trim().toUpperCase()) {
             case "Y":
-                System.out.println("GameControl.saveReportToFile() called, implementation coming soon.\n");
+                this.console.println("GameControl.saveReportToFile() called, implementation coming soon.\n");
                 break;
             case "N":
                 displayView();

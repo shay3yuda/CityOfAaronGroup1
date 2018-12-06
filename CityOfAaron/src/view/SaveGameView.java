@@ -1,4 +1,9 @@
 package view;
+import cityofaaron.CityOfAaron;
+import control.GameControl;
+import model.Game;
+import exceptions.GameControlException;
+import java.io.IOException;
 
 /**
  *
@@ -47,7 +52,19 @@ public class SaveGameView extends ViewBase {
         
         // call control method
         
-        System.out.println("GameControl.saveGameToFile() called, implementation coming soon.\n");
+       String filePath = inputs[0];
+       Game game = CityOfAaron.getCurrentGame();
+       
+       try {
+           GameControl.saveGameToFile(game, filePath);
+       } catch(GameControlException gce) {
+           ErrorView.display(this.getClass().getName(), gce.getMessage());
+           return false;
+       } catch (IOException ex) {
+            ErrorView.display(this.getClass().getName(), "I/O Error: " + ex.getMessage());
+        }
+       
+       this.console.println("Your game has been saved as " + filePath);
         
         return false;
     }

@@ -63,9 +63,9 @@ public class TithesPercentView extends ViewBase {
                 inputValid = true;
                 saveTithing(tithes);
         } catch (NumberFormatException ex) {
-            System.out.println("Please enter a number.");
+            ErrorView.display(this.getClass().getName(), "Please enter a number.");
         } catch (WheatControlException wce) {
-            System.out.println(wce.getMessage());
+            ErrorView.display(this.getClass().getName(), wce.getMessage());
         }
 
         return !inputValid;
@@ -76,7 +76,7 @@ public class TithesPercentView extends ViewBase {
     // complex game stuff in our doAction() method. It will get messy very quickly.
     private void saveTithing(int tithingPercent) {
         //TODO stub function, to be completed after AnnualReport is implemented 
-        System.out.println("Saving tithing percent");
+        this.console.println("Saving tithing percent");
     }
 
 }

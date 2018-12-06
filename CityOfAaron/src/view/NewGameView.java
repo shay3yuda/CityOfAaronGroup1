@@ -59,7 +59,7 @@ public class NewGameView extends ViewBase {
             String playerName = inputs[0];
             createAndStartGame(playerName);
         } catch (GameControlException ex) {
-            System.out.println(ex.getMessage());
+            ErrorView.display(this.getClass().getName(), ex.getMessage());
             return false;
         }
         // to end the loop
@@ -74,11 +74,11 @@ public class NewGameView extends ViewBase {
 
         CityOfAaron.setCurrentGame(game);
 
-        System.out.println();
-        System.out.println("Welcome to the game, " + CityOfAaron.getCurrentGame().getThePlayer().getName() + "!\n");
+        this.console.println();
+        this.console.println("Welcome to the game, " + CityOfAaron.getCurrentGame().getThePlayer().getName() + "!\n");
 
         //Create and call the GameMenuView.
-        GameMenuView gameMenu = new GameMenuView();
+        View gameMenu = new GameMenuView();
         gameMenu.displayView();
     }
 }

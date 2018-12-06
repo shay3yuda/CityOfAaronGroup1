@@ -82,7 +82,8 @@ public class ReportsMenuView extends ViewBase {
                 toolsInStorehouse();
                 break;
             case "O":
-                animalsInStorehouse();
+                View toolReport = new ToolReportView();
+                toolReport.displayView();
                 break;
             case "P":
                 provisionsInStorehouse();

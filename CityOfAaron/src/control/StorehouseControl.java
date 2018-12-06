@@ -9,6 +9,7 @@ import model.Animal;
 import model.Game;
 import model.Provision;
 import javafx.util.Pair;
+import exceptions.StorehouseControlException;
 
 /**
  *
@@ -24,7 +25,7 @@ public class StorehouseControl {
         InventoryItem[] tools = new InventoryItem[5];
 
         tools[0] = new InventoryItem(ItemType.TOOLS, 225, Condition.GOOD, "shovels");
-        tools[1] = new InventoryItem(ItemType.TOOLS, 213, Condition.GOOD, "hoes");
+        tools[1] = new InventoryItem(ItemType.TOOLS, 213, Condition.FAIR, "hoes");
         tools[2] = new InventoryItem(ItemType.TOOLS, 300, Condition.GOOD, "axes");
         tools[3] = new InventoryItem(ItemType.TOOLS, 283, Condition.GOOD, "saws");
         tools[4] = new InventoryItem(ItemType.TOOLS, 411, Condition.GOOD, "hammers");
@@ -100,6 +101,13 @@ public class StorehouseControl {
             total += toolCount;
         }
         return total;
+    }
+    
+        public static void testInput(String[] inputs) throws StorehouseControlException {
+
+        if (inputs[0] == null || inputs[0].equals("")) {
+            throw new StorehouseControlException("No name entered; returning to the Reports Menu.");
+        }
     }
 
 }

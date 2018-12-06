@@ -1,3 +1,0 @@
-
-
-view.NewGameView - No name entered; returning to the Main Menu.

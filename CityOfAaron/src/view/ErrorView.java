@@ -26,7 +26,6 @@ public class ErrorView {
         
         log.printf("%n%n%s", className + " - " + errorMessage);
         log.flush();
-        log.close();
         
     }
     

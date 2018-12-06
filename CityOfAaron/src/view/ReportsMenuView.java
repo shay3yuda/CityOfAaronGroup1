@@ -75,11 +75,20 @@ public class ReportsMenuView extends ViewBase {
             case "A":
                 animalsInStorehouse();
                 break;
+            case "R":
+                animalsInStorehouse();
+                break;
             case "T":
                 toolsInStorehouse();
                 break;
+            case "O":
+                animalsInStorehouse();
+                break;
             case "P":
                 provisionsInStorehouse();
+                break;
+            case "V":
+                animalsInStorehouse();
                 break;
             case "G":
                 authorsOfGame();

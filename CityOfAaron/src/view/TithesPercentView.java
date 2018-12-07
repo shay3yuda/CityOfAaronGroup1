@@ -64,9 +64,7 @@ public class TithesPercentView extends ViewBase {
                 saveTithing(tithes);
         } catch (NumberFormatException ex) {
             ErrorView.display(this.getClass().getName(), "Please enter a number.");
-        } catch (WheatControlException wce) {
-            ErrorView.display(this.getClass().getName(), wce.getMessage());
-        }
+        } 
 
         return !inputValid;
     }

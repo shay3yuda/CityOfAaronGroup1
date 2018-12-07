@@ -89,8 +89,7 @@ public class ReportsMenuView extends ViewBase {
                 provisionsInStorehouse();
                 break;
             case "V":
-                View provisionReport = new ProvisionReportView();
-                provisionReport.displayView();
+                provisionsInStorehouse();
                 break;
             case "G":
                 authorsOfGame();

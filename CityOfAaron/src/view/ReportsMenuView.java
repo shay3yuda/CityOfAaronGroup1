@@ -141,7 +141,6 @@ public class ReportsMenuView extends ViewBase {
         long total = StorehouseControl.toolQuantity();
         this.console.println("There is a total of " + total + " tools in the Storehouse.");
 
-        //saveReport();
     }
 
     private void provisionsInStorehouse() {

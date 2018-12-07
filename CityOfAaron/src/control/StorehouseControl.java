@@ -88,7 +88,7 @@ public class StorehouseControl {
             }
         }
         return new Pair[]{new Pair<>(name, minValue)};
-        
+
     }
 
     public static long toolQuantity() {
@@ -102,10 +102,17 @@ public class StorehouseControl {
         }
         return total;
     }
-    
-        public static void testInput(String[] inputs) throws StorehouseControlException {
+
+    public static void testInput(String[] inputs) throws StorehouseControlException {
 
         if (inputs[0] == null || inputs[0].equals("")) {
+            throw new StorehouseControlException("No name entered; returning to the Reports Menu.");
+        }
+    }
+
+    public static void provisionTestInput(String filePath) throws StorehouseControlException {
+                
+        if (filePath == null || filePath.equals("")) {
             throw new StorehouseControlException("No name entered; returning to the Reports Menu.");
         }
     }

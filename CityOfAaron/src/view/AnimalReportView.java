@@ -78,8 +78,9 @@ public class AnimalReportView extends ViewBase {
             animalReport.println(String.format(format, "Quntity", "Type", "Age"));
             animalReport.println("---------------------------------");
 
-            for (Animal animal : animals) {
-                animalReport.println(String.format(format, animal.getQuantity(), animal.getName(), animal.getAge()));
+           
+            for (int i = 0; i < animals.length; i++) {
+                animalReport.println(String.format(format, animals[i].getQuantity(), animals[i].getName(), animals[i].getAge()));
             }
             animalReport.println();
             animalReport.println("End of Animla Report");

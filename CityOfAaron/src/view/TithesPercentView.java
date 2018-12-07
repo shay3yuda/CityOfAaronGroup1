@@ -59,13 +59,16 @@ public class TithesPercentView extends ViewBase {
 
         try {
             tithes = Integer.parseInt(inputs[0]);
-            WheatControl.checkTithing(tithes);
-                inputValid = true;
-                saveTithing(tithes);
+            if (WheatControl.checkTithing(tithes) == false) {
+                ErrorView.display(this.getClass().getName(), "Tithing value of "
+                        + tithes
+                        + " is invalid. It should be between 0 and 100.");
+                return true;
+            }
+            inputValid = true;
+            saveTithing(tithes);
         } catch (NumberFormatException ex) {
             ErrorView.display(this.getClass().getName(), "Please enter a number.");
-        } catch (WheatControlException wce) {
-            ErrorView.display(this.getClass().getName(), wce.getMessage());
         }
 
         return !inputValid;

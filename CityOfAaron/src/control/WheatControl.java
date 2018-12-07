@@ -116,12 +116,7 @@ public class WheatControl {
         }
     }
 
-    public static void checkTithing(int tithes) throws WheatControlException {
-        if (tithes < 0) {
-            throw new WheatControlException("Please enter a positive number.");
-        } else if (tithes > 100) {
-            throw new WheatControlException("Please enter a number that is not greater than 100.");
-        }
+    public static boolean checkTithing(int tithes) {
+        return tithes >= 0 && tithes <= 100;
     }
-
 }

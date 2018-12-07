@@ -123,7 +123,7 @@ public class ReportsMenuView extends ViewBase {
         this.console.println("\nYour " + maxAge[0].getKey() + " is the oldest animal\n"
                 + "you have, at " + maxAge[0].getValue() + "-years old.\n"
                 + "Consider acquiring a new one.\n");
-        saveReport();
+        //saveReport();
     }
 
     private void toolsInStorehouse() {
@@ -141,7 +141,7 @@ public class ReportsMenuView extends ViewBase {
         long total = StorehouseControl.toolQuantity();
         this.console.println("There is a total of " + total + " tools in the Storehouse.");
 
-        saveReport();
+        //saveReport();
     }
 
     private void provisionsInStorehouse() {
@@ -160,7 +160,7 @@ public class ReportsMenuView extends ViewBase {
 
         Pair[] minValue = StorehouseControl.provisionMinValue();
         this.console.println("You only have " + minValue[0].getValue() + " left of " + minValue[0].getKey() + ". You should search for more.\n");
-        saveReport();
+        //saveReport();
     }
 
     private Author authorsOfGame() {
@@ -177,7 +177,7 @@ public class ReportsMenuView extends ViewBase {
 
         }
         this.console.println();
-        saveReport();
+        //saveReport();
         return null;
     }
 

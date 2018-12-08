@@ -23,7 +23,7 @@ public class AnimalReportView extends ViewBase {
 
     @Override
     protected String getMessage() {
-        return "want to save Animal Report to a file?";
+        return "\nWant to save Animal Report to a file?";
     }
 
     /**
@@ -57,7 +57,10 @@ public class AnimalReportView extends ViewBase {
             StorehouseControl.testInput(inputs);
             String fileName = inputs[0];
             writeReport(fileName);
-            this.console.println("This Animal Report is saved as: " + fileName);
+            this.console.println("---------------------------------------------\n"
+                    + "This Animal Report is saved as: " + fileName + "\n"
+                    + "---------------------------------------------\n"
+                    + "Returning to Reports Menu\n\n");
 
         } catch (StorehouseControlException ex) {
             ErrorView.display(this.getClass().getName(), ex.getMessage());
@@ -76,7 +79,7 @@ public class AnimalReportView extends ViewBase {
 
             String format = "%-20s %-10s %10s";
             animalReport.println(String.format(format, "Quntity", "Type", "Age"));
-            animalReport.println("---------------------------------");
+            animalReport.println("-----------------------------------");
 
            
             for (int i = 0; i < animals.length; i++) {

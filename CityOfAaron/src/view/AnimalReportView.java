@@ -74,7 +74,7 @@ public class AnimalReportView extends ViewBase {
             animalReport.println("Animal Report");
             animalReport.println();
 
-            String format = "%-10s %-10s %10s";
+            String format = "%-20s %-10s %10s";
             animalReport.println(String.format(format, "Quntity", "Type", "Age"));
             animalReport.println("---------------------------------");
 

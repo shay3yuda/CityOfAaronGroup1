@@ -125,7 +125,7 @@ public class ReportsMenuView extends ViewBase {
         this.console.println("\nYour " + maxAge[0].getKey() + " is the oldest animal\n"
                 + "you have, at " + maxAge[0].getValue() + "-years old.\n"
                 + "Consider acquiring a new one.\n");
-        saveReport();
+
     }
 
     private void toolsInStorehouse() {
@@ -143,7 +143,6 @@ public class ReportsMenuView extends ViewBase {
         long total = StorehouseControl.toolQuantity();
         this.console.println("There is a total of " + total + " tools in the Storehouse.");
 
-        saveReport();
     }
 
     private void provisionsInStorehouse() {
@@ -162,7 +161,7 @@ public class ReportsMenuView extends ViewBase {
 
         Pair[] minValue = StorehouseControl.provisionMinValue();
         this.console.println("You only have " + minValue[0].getValue() + " left of " + minValue[0].getKey() + ". You should search for more.\n");
-        saveReport();
+
     }
 
     private Author authorsOfGame() {
@@ -179,26 +178,26 @@ public class ReportsMenuView extends ViewBase {
 
         }
         this.console.println();
-        saveReport();
+
         return null;
     }
 
-    private void saveReport() {
-
-        String[] inputs = new String[1];
-
-        inputs[0] = getUserInput("Do you want to save report to file?\n"
-                + "Y - Yes\n"
-                + "N - No\n");
-
-        switch (inputs[0].trim().toUpperCase()) {
-            case "Y":
-                this.console.println("GameControl.saveReportToFile() called, implementation coming soon.\n");
-                break;
-            case "N":
-                displayView();
-                break;
-
-        }
-    }
+//    private void saveReport() {
+//
+//        String[] inputs = new String[1];
+//
+//        inputs[0] = getUserInput("Do you want to save report to file?\n"
+//                + "Y - Yes\n"
+//                + "N - No\n");
+//
+//        switch (inputs[0].trim().toUpperCase()) {
+//            case "Y":
+//                this.console.println("GameControl.saveReportToFile() called, implementation coming soon.\n");
+//                break;
+//            case "N":
+//                displayView();
+//                break;
+//
+//        }
+//    }
 }

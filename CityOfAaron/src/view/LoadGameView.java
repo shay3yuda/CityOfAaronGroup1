@@ -57,15 +57,14 @@ public class LoadGameView extends ViewBase {
         try {
             GameControl.testInput(inputs);
             GameControl.loadGameFromFile(filePath);
+            View gameMenu = new GameMenuView();
+            gameMenu.displayView();
         } catch (GameControlException ex) {
             ErrorView.display(this.getClass().getName(), ex.getMessage());
             return false;
         } catch (IOException ex) {
             ErrorView.display(this.getClass().getName(), "I/O Error: " + ex.getMessage());
         }
-
-        View gameMenu = new GameMenuView();
-        gameMenu.displayView();
 
         return false;
     }

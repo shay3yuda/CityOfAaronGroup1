@@ -17,6 +17,8 @@ import model.Animal;
 import exceptions.GameControlException;
 import java.io.*;
 import cityofaaron.CityOfAaron;
+import view.ErrorView;
+import view.ViewBase;
 
 /**
  *
@@ -83,7 +85,7 @@ public class GameControl {
         try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(filePath))) {
             game = (Game)in.readObject();
         } catch (IOException | ClassNotFoundException ex) {
-            ex.printStackTrace();
+            ErrorView.display(ViewBase.class.getName(), "Error reading input: " + ex.getMessage());
         }
 
         CityOfAaron.setCurrentGame(game);
